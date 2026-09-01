@@ -1,0 +1,39 @@
+{
+  "job": "daa0dq6rbfbs73ci56bg",
+  "backend": "ibm_kingston",
+  "leftover": {
+    "no_build_k0": 0.7996389421068419,
+    "no_build_k1": 0.8246019013211966,
+    "milp_k0": 0.8010929249108455,
+    "milp_k1": 0.7558421990782935,
+    "deg2_hw_k0": 0.6696265907206541,
+    "deg2_hw_k1": 0.6756033068306069,
+    "certified_k0": 0.7836595724378208,
+    "certified_k1": 0.6703879004821688,
+    "certified_null_k0": 0.030808881223193866,
+    "certified_ctrl_k1": 0.7182314438457369
+  },
+  "dL": {
+    "no_build": -0.024962959214354652,
+    "milp": 0.04525072583255196,
+    "deg2_hw": -0.005976716109952762,
+    "certified": 0.11327167195565202
+  },
+  "hw_order": [
+    "certified",
+    "milp",
+    "deg2_hw",
+    "no_build"
+  ],
+  "frozen_order": [
+    "certified",
+    "deg2_hw",
+    "milp",
+    "no_build"
+  ],
+  "P1": false,
+  "P2": true,
+  "P3": true,
+  "P4": true,
+  "verdict": "LOSS"
+}

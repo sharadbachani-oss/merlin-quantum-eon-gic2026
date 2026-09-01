@@ -1,0 +1,43 @@
+{
+  "pending": "C:\\quantum ai 2026\\eon\\eon_field_pending_20260830_143209.json",
+  "backend": "ibm_kingston",
+  "main_job": "daa0dq6rbfbs73ci56bg",
+  "main_names": [
+    "no_build_k0",
+    "no_build_k1",
+    "milp_k0",
+    "milp_k1",
+    "deg2_hw_k0",
+    "deg2_hw_k1",
+    "certified_k0",
+    "certified_k1",
+    "certified_null_k0",
+    "certified_ctrl_k1"
+  ],
+  "depths": [
+    9,
+    56,
+    9,
+    79,
+    9,
+    192,
+    9,
+    210,
+    9,
+    219
+  ],
+  "twos": [
+    3,
+    18,
+    4,
+    39,
+    6,
+    90,
+    7,
+    114,
+    7,
+    126
+  ],
+  "nq": 156,
+  "submitted": "2026-08-30T14:33:12"
+}

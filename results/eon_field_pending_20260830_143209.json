@@ -1,0 +1,121 @@
+{
+  "card": "EON FIELD PENDING (frozen before shots)",
+  "tag": "20260830_143209",
+  "shots": 8192,
+  "dt": 0.3,
+  "dt_ctrl": 0.36,
+  "mu": 3.927050983124843,
+  "theta_star": 0.776195881506894,
+  "c_star": 0.7005699377,
+  "existing": [
+    7,
+    8,
+    9
+  ],
+  "quench_rung": 7,
+  "nq": 20,
+  "n_bonds": 39,
+  "frozen_dL": {
+    "no_build": {
+      "dL01": -0.042368913618838655,
+      "L0": 0.8089484842358982,
+      "L1": 0.8513173978547368,
+      "congestion": 77.12535161643093,
+      "plan": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "milp": {
+      "dL01": 0.041950734801781686,
+      "L0": 0.808948484235898,
+      "L1": 0.7669977494341164,
+      "congestion": 2.495020477761429,
+      "plan": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    "deg2_hw": {
+      "dL01": 0.12375813214410303,
+      "L0": 0.808948484235898,
+      "L1": 0.685190352091795,
+      "congestion": 1.6245098112238707,
+      "plan": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    "certified": {
+      "dL01": 0.14010947783425176,
+      "L0": 0.8089484842358969,
+      "L1": 0.6688390064016452,
+      "congestion": 1.4403113122998072,
+      "plan": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "frozen_order": [
+    "certified",
+    "deg2_hw",
+    "milp",
+    "no_build"
+  ],
+  "model_gate": true,
+  "prereg": {
+    "P1": "\u0394L hardware order is certified > deg2_hw > milp > no_build (same as referee and SV gate)",
+    "P2": "certified L(0) \u2248 L(1) of the other arms is forbidden: certified must absorb (\u0394L > 0) and more than milp",
+    "P3": "null (no quench) leftover on slack star is below quench k=0 by \u2265 0.15 \u2014 prep sits near C*, quench is real",
+    "P4": "detuned dt=0.36 certified k=1 moves vs main k=1 (|\u0394L_ctrl \u2212 \u0394L_main| > 0.02)"
+  },
+  "dual": {
+    "PASS": "hardware \u0394L ranking matches frozen order after one damping envelope. Headline: NISQ congestion field names the certified lines.",
+    "LOSS": "publish the device order. QAOA receipt still holds the bitstring. No caption swap."
+  },
+  "arms": [
+    "no_build_k0",
+    "no_build_k1",
+    "milp_k0",
+    "milp_k1",
+    "deg2_hw_k0",
+    "deg2_hw_k1",
+    "certified_k0",
+    "certified_k1",
+    "certified_null_k0",
+    "certified_ctrl_k1"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+ "card": "eon57_deep MILP gap-vs-time (clean fit; 120s sentinel excluded)",
+ "points": [
+  [
+   481.0,
+   0.3381
+  ],
+  [
+   1801.0,
+   0.33806
+  ],
+  [
+   9437.0,
+   0.2259
+  ]
+ ],
+ "note": "'3600s budget' leg ran 9,437s wall (HiGHS overshoot) \u2014 quoted at its true wall time",
+ "fit_full": {
+  "slope": -0.038947097514921286,
+  "intercept": 0.5970008326016163
+ },
+ "fastest_segment_slope": -0.06771736179608445,
+ "projected_gap": {
+  "afternoon_6h": [
+   0.20829132798120387,
+   0.1698262876770219
+  ],
+  "day": [
+   0.15429918631428208,
+   0.07595009086919463
+  ]
+ },
+ "projected_days_to_proof": [
+  52.549911943771725,
+  3.069684735570963
+ ],
+ "enum_cpu_days": 86.99297185185185
+}

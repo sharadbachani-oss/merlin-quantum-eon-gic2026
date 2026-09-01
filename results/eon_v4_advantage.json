@@ -1,0 +1,247 @@
+{
+  "card": "EON v4 ADVANTAGE EVIDENCE",
+  "generated": "2026-08-30",
+  "wall_s": 42.761881828308105,
+  "two_build": {
+    "note": "Two different builds of eon14_hard. The 77.1\u21922.50 / 227\u219219 numbers grade the MILP-objective plan under the physics referee. The Dirac-certified plan's own referee is congestion 1.44 / 7 overloads / 137 vviol. Both receipts are internally consistent; they must never be spliced into one sentence.",
+    "dirac_is_exact_argmin": true,
+    "deg2_true_objective": 98.09278915130058,
+    "deg2_surrogate_value": -15.000164268198205,
+    "rows": [
+      {
+        "name": "no_build",
+        "plan": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "objective": 3856.2675808215467,
+        "congestion": 77.12535161643093,
+        "overloads": 227,
+        "vviol": 423,
+        "capex": 0.0
+      },
+      {
+        "name": "milp_disjunctive",
+        "plan": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "objective": 131.87102388807145,
+        "congestion": 2.495020477761429,
+        "overloads": 19,
+        "vviol": 293,
+        "capex": 7.12
+      },
+      {
+        "name": "dirac_certified",
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "objective": 83.43556561499037,
+        "congestion": 1.4403113122998072,
+        "overloads": 7,
+        "vviol": 137,
+        "capex": 11.42
+      },
+      {
+        "name": "deg2_surrogate",
+        "plan": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "objective": 98.09278915130058,
+        "congestion": 1.6926557830260116,
+        "overloads": 12,
+        "vviol": 264,
+        "capex": 13.459999999999999
+      }
+    ]
+  },
+  "hidden_congestion": {
+    "n_plans": 1024,
+    "certified_vviol": 137,
+    "nobuild_vviol": 423,
+    "n_dc_ok_voltage_dirty": 145,
+    "n_better_dc_worse_voltage": 8,
+    "certified_clears_voltage_vs_nobuild": true,
+    "voltage_reduction_vs_nobuild": 286,
+    "exemplar": {
+      "plan": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "congestion": 1.4490760435498427,
+      "vviol": 138,
+      "objective": 85.65380217749214
+    }
+  },
+  "held_out": {
+    "wall_s": 0.3765406608581543,
+    "seeds": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111
+    ],
+    "summary": {
+      "no_build": {
+        "congestion_mean": 71.08448391320776,
+        "congestion_std": 4.273860978634223,
+        "overloads_mean": 221.0,
+        "vviol_mean": 427.25,
+        "n_seeds": 12
+      },
+      "milp_disjunctive": {
+        "congestion_mean": 2.067851572532618,
+        "congestion_std": 0.321122650408498,
+        "overloads_mean": 15.333333333333334,
+        "vviol_mean": 296.9166666666667,
+        "n_seeds": 12
+      },
+      "dirac_certified": {
+        "congestion_mean": 1.2294039909161374,
+        "congestion_std": 0.16880126099214926,
+        "overloads_mean": 5.583333333333333,
+        "vviol_mean": 131.83333333333334,
+        "n_seeds": 12
+      },
+      "deg2_surrogate": {
+        "congestion_mean": 1.3718868447828705,
+        "congestion_std": 0.22739440431162894,
+        "overloads_mean": 10.083333333333334,
+        "vviol_mean": 269.3333333333333,
+        "n_seeds": 12
+      }
+    },
+    "dirac_vs_milp_pct": 40.546797108342986,
+    "dirac_vs_deg2_pct": 10.385904231721382,
+    "dirac_vs_nobuild_pct": 98.27050303633462
+  },
+  "schmidt_scaling": {
+    "eon14_easy_n6": {
+      "n_bits": 6,
+      "exact_ranks": [
+        2,
+        4,
+        8,
+        4,
+        2
+      ],
+      "exact_mid_rank": 8,
+      "exact_mid_max": 8,
+      "deg2_ranks": [
+        2,
+        4,
+        5,
+        4,
+        2
+      ],
+      "deg2_mid_rank": 5,
+      "saturates": true
+    },
+    "eon14_hard_n10": {
+      "n_bits": 10,
+      "exact_ranks": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        16,
+        8,
+        4,
+        2
+      ],
+      "exact_mid_rank": 32,
+      "exact_mid_max": 32,
+      "deg2_ranks": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        6,
+        5,
+        4,
+        2
+      ],
+      "deg2_mid_rank": 7,
+      "saturates": true
+    }
+  },
+  "poly_residuals": {
+    "2": 262.3531335756097,
+    "3": 72.3719446464147,
+    "4": 51.52299716779498,
+    "5": 9.713308944252503
+  },
+  "utility_qaoa_100q": {
+    "card": "EON_UTILITY_QAOA_100Q \u2014 FROZEN DESIGN, NOT FLOWN",
+    "n_qubits": 100,
+    "n_candidates": 20,
+    "n_scenario_replicas": 5,
+    "candidate_max_degree": 5,
+    "entangled_max_degree": 9,
+    "chi_lower_bound_replicas": 32,
+    "statevector_dim": 1267650600228229401496703205376,
+    "statevector_impossible": true,
+    "prereg_pass": "If hardware sampled-best (physics referee) is strictly below every affordable-chi MPS sampled-best of the SAME circuit, the rubric's advantage evidence is adjudicated.",
+    "prereg_tie": "If any chi ties, that chi is the published classical price. No advantage headline. The representation column (degree-5 Dirac, Schmidt wall) still stands independently.",
+    "status": "design frozen 2026-08-30; hardware not submitted"
+  },
+  "hardware_receipts": {
+    "dirac_native": "6a79a72508442f441bbb5e56",
+    "dirac_deg2": "6a79a74e08442f441bbb5e57",
+    "qaoa_marrakesh": "d9sqks1dsedc73ai3o30"
+  },
+  "claim_class": "representation-advantage + certified-optimum + three-rung trust ladder. NOT a 100q hardware-vs-MPS flight (that card is frozen, not flown). NOT an n=10 speed claim."
+}

@@ -1,0 +1,292 @@
+{
+  "card": "EON RUBRIC \u2014 line set + MPS-on-true-objective",
+  "eon14_hard": {
+    "exact_min": 83.43556561499037,
+    "plan": [
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "capex": 11.42,
+    "congestion": 1.4403113122998072,
+    "overloads": 7,
+    "vviol": 137,
+    "lines": [
+      {
+        "candidate": 0,
+        "from_bus": 4,
+        "to_bus": 12,
+        "reactance_pu": 0.10464909813915864,
+        "rating_pu": 0.8727901055219687,
+        "capex": 1.0
+      },
+      {
+        "candidate": 2,
+        "from_bus": 1,
+        "to_bus": 8,
+        "reactance_pu": 0.11843945372466966,
+        "rating_pu": 0.9266198749528032,
+        "capex": 1.26
+      },
+      {
+        "candidate": 3,
+        "from_bus": 2,
+        "to_bus": 6,
+        "reactance_pu": 0.13207403714046104,
+        "rating_pu": 0.9849151841031609,
+        "capex": 1.3900000000000001
+      },
+      {
+        "candidate": 5,
+        "from_bus": 4,
+        "to_bus": 10,
+        "reactance_pu": 0.12801369791799552,
+        "rating_pu": 0.802932497909838,
+        "capex": 1.65
+      },
+      {
+        "candidate": 7,
+        "from_bus": 0,
+        "to_bus": 1,
+        "reactance_pu": 0.05917,
+        "rating_pu": 1.35,
+        "capex": 1.9100000000000001
+      },
+      {
+        "candidate": 8,
+        "from_bus": 0,
+        "to_bus": 4,
+        "reactance_pu": 0.22304,
+        "rating_pu": 0.9,
+        "capex": 2.04
+      },
+      {
+        "candidate": 9,
+        "from_bus": 1,
+        "to_bus": 2,
+        "reactance_pu": 0.19797,
+        "rating_pu": 0.9,
+        "capex": 2.17
+      }
+    ],
+    "no_build": {
+      "congestion": 77.12535161643093,
+      "overloads": 227,
+      "vviol": 423
+    },
+    "congestion_reduction": {
+      "thermal": 75.68504030413112,
+      "thermal_pct": 98.13250600209521,
+      "overloads": 220,
+      "vviol": 286
+    },
+    "mps_chi_sweep": [
+      {
+        "chi": 1,
+        "recon_rel_energy": 0.03280725706844754,
+        "last_kept_energy": 0.9997331434247702,
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 87.46580116693482,
+        "gap": 4.0302355519444575,
+        "gap_pct": 4.830356841519834,
+        "matches_exact": false
+      },
+      {
+        "chi": 2,
+        "recon_rel_energy": 0.006546376306216838,
+        "last_kept_energy": 1.0,
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 85.65380217749214,
+        "gap": 2.2182365625017724,
+        "gap_pct": 2.6586223107034765,
+        "matches_exact": false
+      },
+      {
+        "chi": 4,
+        "recon_rel_energy": 0.0002293605086379634,
+        "last_kept_energy": 1.0,
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 90.99549056119353,
+        "gap": 7.559924946203168,
+        "gap_pct": 9.060794267384846,
+        "matches_exact": false
+      },
+      {
+        "chi": 8,
+        "recon_rel_energy": 8.723171258310672e-06,
+        "last_kept_energy": 1.0,
+        "plan": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 85.00558240636808,
+        "gap": 1.5700167913777108,
+        "gap_pct": 1.8817116894999935,
+        "matches_exact": false
+      },
+      {
+        "chi": 16,
+        "recon_rel_energy": 7.696015667473384e-08,
+        "last_kept_energy": 1.0,
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 83.43556561499037,
+        "gap": 0.0,
+        "gap_pct": 0.0,
+        "matches_exact": true
+      },
+      {
+        "chi": 32,
+        "recon_rel_energy": 1.864433674473037e-29,
+        "last_kept_energy": 1.0,
+        "plan": [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 83.43556561499037,
+        "gap": 0.0,
+        "gap_pct": 0.0,
+        "matches_exact": true
+      }
+    ]
+  },
+  "eon14_easy": {
+    "exact_min": 14.194246961887657,
+    "mps_chi_sweep": [
+      {
+        "chi": 1,
+        "recon_rel_energy": 0.031212371170711586,
+        "last_kept_energy": 0.9989174820740049,
+        "plan": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "true_objective": 24.95208631883785,
+        "gap": 10.757839356950193,
+        "gap_pct": 75.79013797516409,
+        "matches_exact": false
+      },
+      {
+        "chi": 2,
+        "recon_rel_energy": 0.0038764986523702146,
+        "last_kept_energy": 1.0,
+        "plan": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "true_objective": 14.194246961887657,
+        "gap": 0.0,
+        "gap_pct": 0.0,
+        "matches_exact": true
+      },
+      {
+        "chi": 4,
+        "recon_rel_energy": 1.4647010554363402e-06,
+        "last_kept_energy": 1.0,
+        "plan": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "true_objective": 14.194246961887657,
+        "gap": 0.0,
+        "gap_pct": 0.0,
+        "matches_exact": true
+      },
+      {
+        "chi": 8,
+        "recon_rel_energy": 5.584613961115496e-31,
+        "last_kept_energy": 1.0,
+        "plan": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "true_objective": 14.194246961887657,
+        "gap": 0.0,
+        "gap_pct": 0.0,
+        "matches_exact": true
+      }
+    ]
+  }
+}

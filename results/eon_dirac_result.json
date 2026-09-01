@@ -1,0 +1,69 @@
+{
+ "card": "EON14_HARD DIRAC CERTIFICATION",
+ "exact_min": 83.43556561499051,
+ "exact_argmin": [
+  1,
+  0,
+  1,
+  1,
+  0,
+  1,
+  0,
+  1,
+  1,
+  1
+ ],
+ "residuals": {
+  "2": 262.353133575642,
+  "3": 72.3719446464246,
+  "4": 51.522997167799076,
+  "5": 9.71330894422158
+ },
+ "native_degree": 5,
+ "native": {
+  "job": "6a79a72508442f441bbb5e56",
+  "best_exact_value": 83.43556561499051,
+  "solution": [
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   1
+  ],
+  "gap_to_optimum": 0.0,
+  "certified_optimal": true,
+  "referee": {
+   "congestion": 1.4403113122998101,
+   "overloads": 7,
+   "vviol": 137
+  }
+ },
+ "surrogate_deg2": {
+  "job": "6a79a74e08442f441bbb5e57",
+  "best_exact_value": 90.9954905611935,
+  "solution": [
+   1,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1
+  ],
+  "gap_to_optimum": 7.559924946202997,
+  "certified_optimal": false,
+  "referee": {
+   "congestion": 1.6245098112238703,
+   "overloads": 8,
+   "vviol": 133
+  }
+ }
+}

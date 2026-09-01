@@ -1,0 +1,84 @@
+{
+ "card": "EON57_UTIL DIRAC FLIGHT (two-arm)",
+ "fit": {
+  "maxres": 370.58516510191475,
+  "rel": 0.025333556723801002,
+  "spearman": 0.999281944190538
+ },
+ "native_degree": 2,
+ "bars": {
+  "highs_referee": 24651.653,
+  "best_sampled_6001": 22180.884
+ },
+ "arms": {
+  "native_deg3": {
+   "job": "6a943a6408442f441bbb6ad1",
+   "n_distinct": 1,
+   "graded": [
+    {
+     "obj": 22078.00931640615,
+     "plan": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+     ],
+     "count": 1
+    }
+   ]
+  },
+  "restricted_deg2": {
+   "job": "6a943a7408442f441bbb6ad2",
+   "n_distinct": 1,
+   "graded": [
+    {
+     "obj": 22078.00931640615,
+     "plan": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1
+     ],
+     "count": 1
+    }
+   ]
+  }
+ },
+ "verdict": {
+  "P1_beats_highs_referee": true,
+  "P1p_beats_best_sampled": true,
+  "P2_native_beats_deg2": false
+ }
+}
