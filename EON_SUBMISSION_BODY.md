@@ -217,6 +217,54 @@ subgrid data.
 
 ---
 
+## Related work and positioning
+
+**The state of the field.** Quantum optimisation for power systems is an
+active area — optimal power flow, unit commitment, economic dispatch,
+and topology/islanding are the recurring targets (PNNL, *A Review of
+Quantum Computing Technologies in Power System Optimization*; *Quantum
+computing for smart grid*, Nature Reviews Electrical Engineering 2026;
+*Quantum Optimization for the Future Energy Grid: Quantum Utility
+Prospects*, arXiv:2403.17495). 2026 has brought substantial industrial
+engagement: Infleqtion with Eaton on grid contingency analysis under an
+AFRL-funded programme, ORNL with IonQ on grid optimisation, and QCi's
+own sponsorship of energy infrastructure use cases.
+
+**The gap this submission addresses.** Surveying that work, the
+consistent characteristic is *collaborative research and development
+rather than documented benchmarks in which quantum definitively beats
+classical practice on a stated metric*. Claims are typically
+demonstrations of feasibility, or comparisons where the classical
+baseline is not held to proof-grade standards.
+
+This package is constructed to close exactly that gap:
+
+- **One referee for every solver.** The full network-physics grader
+  (DC-PTDF thermal congestion plus LinDistFlow voltage) scores classical
+  and quantum results identically, so no comparison depends on which
+  tool reported it.
+- **Hardness as a measured convergence law, not a timeout.** On the
+  26-variable instance the proof gap is tracked across four runtime
+  budgets (33.8% → 22.6% at 2.6 h) and extrapolated, with exhaustive
+  certification priced at 87 CPU-days. A single timeout proves nothing;
+  a convergence law is falsifiable.
+- **Adversarial attack on our own results.** Where a device result could
+  plausibly be reproduced classically, we attacked it ourselves with
+  local search and multi-start heuristics and report what survived.
+- **A stated advantage class.** The optimisation results are benchmark
+  comparisons against proof-grade MILP; only the fluctuation-spectrum
+  result is claimed as classically unreachable, and that claim is
+  argued from the ill-posedness of analytic continuation rather than
+  from runtime alone.
+
+**Closest published formulation.** REGRID-QAOA (arXiv:2606.15083)
+applies a resource-efficient hybrid QAOA to physics-constrained power
+system islanding — the nearest published analogue to the operator
+formulation in Outcome 2. Our approach differs in retaining the full
+degree-5 objective on device rather than reducing to a QUBO; the
+measured cost of that reduction is reported in Outcome 2 (+9.1% on the
+same device, same instance).
+
 ## Response to §5.3 — Constraints
 
 **Open-source framework and Qiskit compatibility layer.** Every circuit
