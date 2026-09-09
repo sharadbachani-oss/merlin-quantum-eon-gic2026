@@ -1,0 +1,858 @@
+{
+  "card": "EON v5 DYNAMICS CROSSING \u2014 leftover S(\u03c9) vs continuation / MPS",
+  "generated": "2026-09-08",
+  "operator": "H = \u03bc* D \u2212 A6",
+  "mu": 3.927050983124843,
+  "theta_star": 0.776195881506894,
+  "c_star": 0.7005699377,
+  "dt": 0.3,
+  "k_max": 8,
+  "industrial_object": "N-1 quench leftover series L(k) on the existing slack star; S(\u03c9) = |DFT[L \u2212 mean]|\u00b2. Builds are Hamiltonian support.",
+  "realtime": {
+    "no_build": {
+      "leftover_k": [
+        0.8089484842358982,
+        0.8513173978547368,
+        0.8342263262013199,
+        0.8510418507750529,
+        0.4575683118764478,
+        0.858956288985273,
+        0.5174857958817264,
+        0.926055583066331,
+        0.7774795321876431
+      ],
+      "dL": -0.042368913618838655,
+      "congestion": 77.12535161643093,
+      "spectrum": {
+        "freqs": [
+          0.0,
+          0.1111111111111111,
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4444444444444444
+        ],
+        "power": [
+          0.042377164684027545,
+          0.06985926019563582,
+          0.049496041846970436,
+          0.11254071087401142,
+          0.3025642007210624
+        ],
+        "principal_cyc_per_step": 0.4444444444444444,
+        "principal_power": 0.3025642007210624,
+        "lowfreq_power": 0.06985926019563582,
+        "total_power": 0.53446021363768
+      }
+    },
+    "milp": {
+      "leftover_k": [
+        0.808948484235898,
+        0.7669977494341164,
+        0.651978238733336,
+        0.9700819847422665,
+        0.664360132159543,
+        0.765915780650592,
+        0.6501195092830361,
+        0.8461744430974787,
+        0.6240747372069194
+      ],
+      "dL": 0.041950734801781686,
+      "congestion": 2.495020477761429,
+      "spectrum": {
+        "freqs": [
+          0.0,
+          0.1111111111111111,
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4444444444444444
+        ],
+        "power": [
+          0.0011572863708424802,
+          0.01248296858918546,
+          0.03427688836849279,
+          0.03701082373007925,
+          0.13128844092237602
+        ],
+        "principal_cyc_per_step": 0.4444444444444444,
+        "principal_power": 0.13128844092237602,
+        "lowfreq_power": 0.01248296858918546,
+        "total_power": 0.21505912161013352
+      }
+    },
+    "deg2_hw": {
+      "leftover_k": [
+        0.808948484235898,
+        0.685190352091795,
+        0.5833665670818563,
+        0.7723473182259349,
+        0.6711999296050457,
+        0.6540305213131592,
+        0.7294087307731756,
+        0.8170481352793368,
+        0.6256589915499825
+      ],
+      "dL": 0.12375813214410303,
+      "congestion": 1.6245098112238707,
+      "spectrum": {
+        "freqs": [
+          0.0,
+          0.1111111111111111,
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4444444444444444
+        ],
+        "power": [
+          0.0031250776551577817,
+          0.002072515064265315,
+          0.008374427401720256,
+          0.022718580956566398,
+          0.012462023759471886
+        ],
+        "principal_cyc_per_step": 0.3333333333333333,
+        "principal_power": 0.022718580956566398,
+        "lowfreq_power": 0.002072515064265315,
+        "total_power": 0.04562754718202385
+      }
+    },
+    "certified": {
+      "leftover_k": [
+        0.8089484842358969,
+        0.6688390064016452,
+        0.6600181847839608,
+        0.8029971404653694,
+        0.6435870562796019,
+        0.6333022509897356,
+        0.7012028806476287,
+        0.8067935749197038,
+        0.7169727263094515
+      ],
+      "dL": 0.14010947783425176,
+      "congestion": 1.4403113122998072,
+      "spectrum": {
+        "freqs": [
+          0.0,
+          0.1111111111111111,
+          0.2222222222222222,
+          0.3333333333333333,
+          0.4444444444444444
+        ],
+        "power": [
+          0.009437701207031782,
+          0.009238300460655532,
+          0.025176086414083924,
+          0.023044058247341726,
+          0.013321025364371249
+        ],
+        "principal_cyc_per_step": 0.2222222222222222,
+        "principal_power": 0.025176086414083924,
+        "lowfreq_power": 0.009238300460655532,
+        "total_power": 0.07077947048645242
+      }
+    }
+  },
+  "realtime_dL_order": [
+    "certified",
+    "deg2_hw",
+    "milp",
+    "no_build"
+  ],
+  "referee_cong_order": [
+    "certified",
+    "deg2_hw",
+    "milp",
+    "no_build"
+  ],
+  "model_gate": true,
+  "imaginary_time": {
+    "dtau": 0.3,
+    "G_tau_signed": [
+      0.46704662513252976,
+      0.3539497015239192,
+      0.4078595270444288,
+      0.4276752266743327,
+      0.43639630478482266,
+      0.44038018260739964,
+      0.4422296975400976,
+      0.44309329522608354,
+      0.4434969600883983,
+      0.44368549023460274,
+      0.44377341968118755,
+      0.4438143693814766,
+      0.44383341450645153
+    ],
+    "G_tau_rms": [
+      0.8089484842358969,
+      0.38462158820593734,
+      0.44217027979022816,
+      0.4598296048327573,
+      0.467224458396539,
+      0.47050086693172644,
+      0.471984315357659,
+      0.47266261786684205,
+      0.4729742070348396,
+      0.47311766423260937,
+      0.4731837900228467,
+      0.47321429031107526,
+      0.4732283640833168
+    ],
+    "G_tau_mean_zz": [
+      0.23352331256747025,
+      0.34662023617608084,
+      0.2927104106555712,
+      0.2728947110256672,
+      0.2641736329151773,
+      0.26018975509260034,
+      0.2583402401599025,
+      0.2574766424739165,
+      0.2570729776116017,
+      0.25688444746539724,
+      0.25679651801881237,
+      0.2567555683185234,
+      0.2567365231935485
+    ],
+    "G_tau_fit": [
+      0.02321321062607823,
+      -0.08988371298253234,
+      -0.035973887462022736,
+      -0.01615818783211881,
+      -0.007437109721628865,
+      -0.0034532318990518895,
+      -0.0016037169663539186,
+      -0.0007401192803679901,
+      -0.0003364544180532447,
+      -0.0001479242718487872,
+      -5.9994825263975926e-05,
+      -1.9045124974914618e-05,
+      0.0
+    ],
+    "taus": [
+      0.0,
+      0.3,
+      0.6,
+      0.8999999999999999,
+      1.2,
+      1.5,
+      1.7999999999999998,
+      2.1,
+      2.4,
+      2.6999999999999997,
+      3.0,
+      3.3,
+      3.5999999999999996
+    ],
+    "two_pole": {
+      "omegas": [
+        1.6961538461538461,
+        1.8
+      ],
+      "amps": [
+        -1.7211129137312207,
+        1.7193642561233091
+      ],
+      "max_abs_err": 0.05712632096193559,
+      "rms": 0.019854012411514792,
+      "principal": 1.6961538461538461
+    },
+    "two_pole_alt": {
+      "omegas": [
+        1.5923076923076924,
+        1.8
+      ],
+      "amps": [
+        -0.7959794767155669,
+        0.7929753653617939
+      ],
+      "max_abs_err": 0.05831190022356208,
+      "principal": 1.5923076923076924
+    },
+    "three_pole": {
+      "omegas": [
+        1.2807692307692309,
+        1.4884615384615385,
+        1.6961538461538461
+      ],
+      "amps": [
+        3.8140137076796745,
+        -9.2576859087806,
+        5.4524229810850775
+      ],
+      "max_abs_err": 0.04163493846765178,
+      "rms": 0.01556697291038995
+    },
+    "two_pole_max_abs_err": 0.05712632096193559,
+    "alt_max_abs_err": 0.05831190022356208,
+    "two_pole_pred": [
+      -0.0017486576079115412,
+      -0.03275739202059675,
+      -0.038170064281576266,
+      -0.033714673358665875,
+      -0.026543485595710126,
+      -0.019614159757829826,
+      -0.013922640263852157,
+      -0.009611871304492344,
+      -0.006502168894839891,
+      -0.004330719178127355,
+      -0.0028493178790336055,
+      -0.0018561814132036717,
+      -0.0011993670285916844
+    ],
+    "alt_pred": [
+      -0.003004111353772987,
+      -0.03157181275897026,
+      -0.03689389740360048,
+      -0.03297099060678593,
+      -0.026328335085048164,
+      -0.019755326391023266,
+      -0.0142490935920239,
+      -0.010000978545603967,
+      -0.006880767685154318,
+      -0.004662662822031981,
+      -0.003122100318485925,
+      -0.0020705486165611257,
+      -0.0013623751529128327
+    ],
+    "principal_decay_disagree": 0.1038461538461537,
+    "continuation_cyc_per_step": 0.26995126885971477,
+    "alt_cyc_per_step": 0.25342364015401797,
+    "realtime_cyc_per_step": 0.2222222222222222,
+    "continuation_misses_realtime": true
+  },
+  "factorized_no_A6_bonds": {
+    "rows": {
+      "no_build": {
+        "leftover_k": [
+          0.8089484842358982,
+          0.29508246833867474,
+          0.9715157147774436,
+          0.6831521671459924,
+          0.6301924056614905,
+          0.7791009788002511,
+          0.34043758431383736,
+          1.03092639075486,
+          0.5999389352287497
+        ],
+        "dL": 0.5138660158972235
+      },
+      "milp": {
+        "leftover_k": [
+          0.808948484235898,
+          0.29508246833867496,
+          0.9715157147774436,
+          0.6831521671459926,
+          0.6301924056614907,
+          0.7791009788002508,
+          0.34043758431383775,
+          1.0309263907548596,
+          0.5999389352287504
+        ],
+        "dL": 0.513866015897223
+      },
+      "deg2_hw": {
+        "leftover_k": [
+          0.808948484235898,
+          0.2950824683386752,
+          0.9715157147774427,
+          0.6831521671459924,
+          0.6301924056614902,
+          0.7791009788002486,
+          0.3404375843138387,
+          1.0309263907548583,
+          0.5999389352287507
+        ],
+        "dL": 0.5138660158972228
+      },
+      "certified": {
+        "leftover_k": [
+          0.8089484842358969,
+          0.2950824683386756,
+          0.9715157147774434,
+          0.6831521671459923,
+          0.6301924056614909,
+          0.7791009788002495,
+          0.34043758431383964,
+          1.0309263907548576,
+          0.5999389352287507
+        ],
+        "dL": 0.5138660158972214
+      }
+    },
+    "dL_order": [
+      "no_build",
+      "milp",
+      "deg2_hw",
+      "certified"
+    ],
+    "ranking_fails": true
+  },
+  "mps_midcut_control": {
+    "cut": "qubits 0-9 | 10-19 (5 rungs | 5 rungs)",
+    "note": "Control, not the cheap attack. The slack star sits on one side of this cut, so even chi=1 can keep leftover.",
+    "chi_orders": {
+      "1": [
+        "certified",
+        "deg2_hw",
+        "milp",
+        "no_build"
+      ],
+      "2": [
+        "certified",
+        "deg2_hw",
+        "milp",
+        "no_build"
+      ],
+      "4": [
+        "certified",
+        "deg2_hw",
+        "milp",
+        "no_build"
+      ]
+    },
+    "rows": {
+      "1": {
+        "no_build": {
+          "leftover_k": [
+            0.8089484842358987,
+            0.8513173978547376
+          ],
+          "dL": -0.04236891361883888
+        },
+        "milp": {
+          "leftover_k": [
+            0.8089484842358985,
+            0.6958788182359383
+          ],
+          "dL": 0.11306966599996016
+        },
+        "deg2_hw": {
+          "leftover_k": [
+            0.8089484842358995,
+            0.6284071161466568
+          ],
+          "dL": 0.1805413680892427
+        },
+        "certified": {
+          "leftover_k": [
+            0.8089484842358995,
+            0.4529532546433127
+          ],
+          "dL": 0.3559952295925868
+        }
+      },
+      "2": {
+        "no_build": {
+          "leftover_k": [
+            0.8089484842358987,
+            0.8513173978547376
+          ],
+          "dL": -0.04236891361883888
+        },
+        "milp": {
+          "leftover_k": [
+            0.8089484842358985,
+            0.7669977494341168
+          ],
+          "dL": 0.041950734801781686
+        },
+        "deg2_hw": {
+          "leftover_k": [
+            0.8089484842358995,
+            0.6370421411861616
+          ],
+          "dL": 0.17190634304973784
+        },
+        "certified": {
+          "leftover_k": [
+            0.8089484842358995,
+            0.6136698617080901
+          ],
+          "dL": 0.19527862252780936
+        }
+      },
+      "4": {
+        "no_build": {
+          "leftover_k": [
+            0.8089484842358987,
+            0.8513173978547376
+          ],
+          "dL": -0.04236891361883888
+        },
+        "milp": {
+          "leftover_k": [
+            0.8089484842358985,
+            0.7669977494341168
+          ],
+          "dL": 0.041950734801781686
+        },
+        "deg2_hw": {
+          "leftover_k": [
+            0.8089484842358998,
+            0.6900679127396665
+          ],
+          "dL": 0.11888057149623332
+        },
+        "certified": {
+          "leftover_k": [
+            0.8089484842358993,
+            0.6586942580392263
+          ],
+          "dL": 0.15025422619667295
+        }
+      }
+    },
+    "k_max": 1,
+    "frozen_order": [
+      "certified",
+      "deg2_hw",
+      "milp",
+      "no_build"
+    ]
+  },
+  "product_rung_dynamics": {
+    "note": "Cheap local classical: rebuild a product of per-rung 2-qubit states after every step.",
+    "rows": {
+      "no_build": {
+        "leftover_k": [
+          0.8089484842358987,
+          0.9199028377137097,
+          0.8417778556927871,
+          0.7144562472143183,
+          0.557060921063641,
+          0.6617307246264079,
+          0.41730058740248493,
+          0.8403946380262428,
+          0.5965067635734781
+        ],
+        "dL": -0.11095435347781102,
+        "spectrum": {
+          "freqs": [
+            0.0,
+            0.1111111111111111,
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "power": [
+            0.042755536689178954,
+            0.10654355104194636,
+            0.023075116669655053,
+            0.022946031193092718,
+            0.05404683191670596
+          ],
+          "principal_cyc_per_step": 0.1111111111111111,
+          "principal_power": 0.10654355104194636,
+          "lowfreq_power": 0.10654355104194636,
+          "total_power": 0.20661153082140007
+        }
+      },
+      "milp": {
+        "leftover_k": [
+          0.8089484842358987,
+          0.8049530049991618,
+          0.7726146142752592,
+          0.7829700221901504,
+          0.578403988537344,
+          0.881668209872727,
+          0.7929532951111898,
+          0.5794810451354306,
+          0.441232216251344
+        ],
+        "dL": 0.003995479236736932,
+        "spectrum": {
+          "freqs": [
+            0.0,
+            0.1111111111111111,
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "power": [
+            0.014673862760653368,
+            0.0021531392912892042,
+            0.03959787482471176,
+            0.08097935820200881,
+            0.07269510668035523
+          ],
+          "principal_cyc_per_step": 0.3333333333333333,
+          "principal_power": 0.08097935820200881,
+          "lowfreq_power": 0.0021531392912892042,
+          "total_power": 0.19542547899836502
+        }
+      },
+      "deg2_hw": {
+        "leftover_k": [
+          0.8089484842358996,
+          0.6732161269139985,
+          0.8676684073670161,
+          0.6751932972105655,
+          0.7281231014210444,
+          0.5618912467273155,
+          0.8760958754789705,
+          0.5764183415934035,
+          0.6133516811397846
+        ],
+        "dL": 0.13573235732190114,
+        "spectrum": {
+          "freqs": [
+            0.0,
+            0.1111111111111111,
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "power": [
+            8.816199973532022e-06,
+            0.008366912244728127,
+            0.02867455043918124,
+            0.007734450154809723,
+            0.09311256548909524
+          ],
+          "principal_cyc_per_step": 0.4444444444444444,
+          "principal_power": 0.09311256548909524,
+          "lowfreq_power": 0.008366912244728127,
+          "total_power": 0.13788847832781434
+        }
+      },
+      "certified": {
+        "leftover_k": [
+          0.8089484842358985,
+          0.6458050150617801,
+          0.8260841383644171,
+          0.6446773079912327,
+          0.6122630706367573,
+          0.7344266028931613,
+          0.7579822067030795,
+          0.5620419015153783,
+          0.839452366341329
+        ],
+        "dL": 0.16314346917411837,
+        "spectrum": {
+          "freqs": [
+            0.0,
+            0.1111111111111111,
+            0.2222222222222222,
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "power": [
+            0.010040998466142502,
+            0.01115849269636404,
+            0.033201838750062475,
+            0.03231450874670479,
+            0.00158234827744402
+          ],
+          "principal_cyc_per_step": 0.2222222222222222,
+          "principal_power": 0.033201838750062475,
+          "lowfreq_power": 0.01115849269636404,
+          "total_power": 0.07825718847057533
+        }
+      }
+    },
+    "dL_order": [
+      "certified",
+      "deg2_hw",
+      "milp",
+      "no_build"
+    ],
+    "ranking_fails": false
+  },
+  "storage_eon_native": {
+    "source": "20q certified leftover S(\u03c9) \u2014 statevector, this package",
+    "not_source": "VW 64-rung job daa9pn4e74ec73akj9i0",
+    "load_pu": 20.85,
+    "sigma": 0.1,
+    "horizon_h": 24,
+    "leftover_lag1_rho": -0.18918112585963545,
+    "results": {
+      "W": {
+        "energy_mean": 10.666819077965089,
+        "energy_std": 2.4025052750707534,
+        "power_mean": 4.662343493804371,
+        "power_std": 0.6696221119646311,
+        "n": 1200
+      },
+      "AR": {
+        "energy_mean": 9.570937052071809,
+        "energy_std": 2.1157957870816393,
+        "power_mean": 4.735607698451438,
+        "power_std": 0.6787543245765222,
+        "n": 1200
+      },
+      "Q": {
+        "energy_mean": 9.757795409619733,
+        "energy_std": 0.9066228014754036,
+        "power_mean": 4.752767310129447,
+        "power_std": 0.7421680923859351,
+        "n": 1200
+      },
+      "C": {
+        "energy_mean": 6.937352836355995,
+        "energy_std": 0.6936306569299399,
+        "power_mean": 4.600373135818317,
+        "power_std": 0.6534473999245256,
+        "n": 1200
+      }
+    },
+    "white_shortfall": -0.09315871364234522,
+    "ar_overbuild": 0.9808503509549186,
+    "continuation_rel_err": 0.28904506139606106
+  },
+  "hardware": {
+    "two_point_flown": {
+      "kingston": {
+        "job": "daa0dq6rbfbs73ci56bg",
+        "dL": {
+          "no_build": -0.024962959214354652,
+          "milp": 0.04525072583255196,
+          "deg2_hw": -0.005976716109952762,
+          "certified": 0.11327167195565202
+        },
+        "hw_order": [
+          "certified",
+          "milp",
+          "deg2_hw",
+          "no_build"
+        ],
+        "frozen_order": [
+          "certified",
+          "deg2_hw",
+          "milp",
+          "no_build"
+        ],
+        "verdict": "LOSS",
+        "note": "Certified absorbs; MILP absorbs; no-build grows. Degree-2 \u0394L collapsed (\u22120.006 vs frozen +0.124). Ranking is partial \u2014 P1 failed."
+      },
+      "marrakesh": {
+        "job": "daa9do6rbfbs73cifa80",
+        "dL": {
+          "no_build": 0.028595813859414787,
+          "milp": 0.07263082236073759,
+          "deg2_hw": 0.12649066041294954,
+          "certified": 0.1200616263562676
+        },
+        "hw_order": [
+          "deg2_hw",
+          "certified",
+          "milp",
+          "no_build"
+        ],
+        "visibility": [
+          0.9424873731810717,
+          0.9660103525449919,
+          0.9761165214568984,
+          0.9715861698756989,
+          0.925585676897366,
+          0.9252371883141968,
+          0.9471919690538557,
+          0.9522450535098089,
+          0.9620027338385463,
+          0.9517223206350551
+        ],
+        "verdict": "LOSS",
+        "note": "Degree-2 recovered (+0.127 vs frozen +0.124); visibility 0.93\u20130.98. Certified +0.120, so the device order is deg-2 > certified. Ranking is partial \u2014 P1 failed. Cross-device physics is real; full frozen order is not."
+      }
+    },
+    "full_k_spectrum": {
+      "status": "NOT_FLOWN",
+      "job_id": null,
+      "protocol": {
+        "arms": [
+          "certified",
+          "milp",
+          "no_build"
+        ],
+        "k": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          8
+        ],
+        "k_dense": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "n_circuits_protocol": 20,
+        "n_circuits_dense": 29,
+        "controls": [
+          "certified_null_k0",
+          "certified_detuned_dt0.36_k1"
+        ],
+        "backend": "open Heron (fez / kingston / marrakesh)",
+        "shots": 8192,
+        "one_command": "python eon_full_k_leftover.py",
+        "submit_gate": "EON_FULL_K_SUBMIT=1",
+        "default": "retrieve only \u2014 no paid submit",
+        "receipt": "results/eon_full_k_leftover.json",
+        "expected_signature": "Certified-arm DFT principal line matches the statevector \u03c9* after one damping envelope; continuation of the same arm's imag-time G(\u03c4) misses \u03c9*. Do not assign a job id until flown.",
+        "next_flight": {
+          "closes_mitsubishi": true,
+          "command": "EON_FULL_K_SUBMIT=1 python eon_full_k_leftover.py --submit --k-grid dense",
+          "retrieve_command": "python eon_full_k_leftover.py",
+          "arms": [
+            "certified",
+            "milp",
+            "no_build"
+          ],
+          "k": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            "certified_null_k0",
+            "certified_detuned_dt0.36_k1"
+          ],
+          "n_circuits": 29,
+          "shots": 8192,
+          "backend": "open Heron (fez / kingston / marrakesh), lowest queue",
+          "layout": "fixed CHAIN from marrakesh two-point (seed_transpiler=21)",
+          "dd": "XpXm",
+          "compilation": "eon_nisq_field.qiskit_circuit \u2014 same operator as the SV leftover",
+          "twoq_wall": 370,
+          "twoq_note": "v1 certified k=1 was 114 two-qubit gates. Linear scaling puts certified k\u22654 over the v1 370 CX guard. Dense k=8 is the Mitsubishi-closing series; the human go waives that guard or accepts the queue/depth risk. Do not interpolate a 2-point \u0394L flight and call it S(\u03c9).",
+          "grade": "Certified-arm DFT principal line is 0.222 after one damping envelope. Continuation of the same arm's G(\u03c4) still misses (0.270). Two-point jobs cannot host that bin.",
+          "why_dense": "SV S(\u03c9) is |DFT[L(k=0..8) \u2212 mean]|\u00b2. The 0.222 line is the k=2/9 bin of a 9-sample series. The frozen 6-k subset is not uniform and cannot host that bin without interpolation.",
+          "submit_gate": "EON_FULL_K_SUBMIT=1",
+          "default": "NO paid submit"
+        }
+      }
+    },
+    "vw_64rung_spectrum": {
+      "job": "daa9pn4e74ec73akj9i0",
+      "status": "NOT_AN_EON_RESULT",
+      "note": "IBM Heron 64-rung series from the VW annex. Same operator family, different industrial object. v5 does not cite this job as E.ON evidence."
+    },
+    "aquila_rydberg": {
+      "status": "NOT_FLOWN",
+      "job_id": null,
+      "map": "Exact rung \u2192 Rydberg: V=2\u03bc* E_u, \u0394=\u03bc* E_u, \u03a9=2 E_u (fable qc.aquila, verified 1e-9). FOV+C6 binds at 12 pairs / 24 atoms; 252-atom tiling breaks the map.",
+      "expected_signature": "Analog leftover on 4\u201310 active rungs reproduces the statevector \u0394L order certified > deg-2 > MILP > no-build inside the crosstalk bound 1e-3. Protocol only."
+    }
+  },
+  "crossing": {
+    "class_": "advantage of route (real-time leftover spectrum vs ill-posed continuation and cheap MPS dynamics)",
+    "not_claimed": "absolute-energy or 100q hardware-vs-MPS supremacy",
+    "gates": {
+      "realtime_ranks_with_referee": true,
+      "imag_time_two_spectra_disagree": true,
+      "continuation_misses_realtime_line": true,
+      "cheap_local_wrong_dL_order": true,
+      "factorized_wrong_dL_order": true
+    }
+  },
+  "wall_s": 270.5248501300812
+}

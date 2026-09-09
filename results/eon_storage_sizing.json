@@ -1,27 +1,40 @@
 {
- "card": "storage sizing under the measured collective fluctuation class (mg9, 24h, 10% rms)",
- "source_spectrum": "ibm_fez daa9pn4e74ec73akj9i0",
- "rho_matched": 0.9885833540015058,
- "load_pu": 20.85,
- "sigma": 0.1,
- "results": {
-  "W": [
-   12.28442959522392,
-   0.19603865559509234,
-   7.119150638037844,
-   0.04153816108620212
-  ],
-  "M": [
-   194.27949175054445,
-   3.314415089199847,
-   12.702639465250918,
-   0.20481210631331365
-  ],
-  "Q": [
-   16.18040238471634,
-   0.019636513618375834,
-   4.4021977817818,
-   0.011927595768358496
-  ]
- }
+  "card": "storage sizing under the E.ON 20q leftover spectrum (statevector)",
+  "source_spectrum": "eon_dynamics_crossing.json / realtime.certified.spectrum",
+  "hardware_spectrum_job": null,
+  "hardware_spectrum_status": "NOT_FLOWN",
+  "dropped_vw_job": "daa9pn4e74ec73akj9i0",
+  "rho_matched": -0.18918112585963545,
+  "load_pu": 20.85,
+  "sigma": 0.1,
+  "results": {
+    "W": [
+      10.666819077965089,
+      2.4025052750707534,
+      4.662343493804371,
+      0.6696221119646311
+    ],
+    "AR": [
+      9.570937052071809,
+      2.1157957870816393,
+      4.735607698451438,
+      0.6787543245765222
+    ],
+    "Q": [
+      9.757795409619733,
+      0.9066228014754036,
+      4.752767310129447,
+      0.7421680923859351
+    ],
+    "C": [
+      6.937352836355995,
+      0.6936306569299399,
+      4.600373135818317,
+      0.6534473999245256
+    ]
+  },
+  "white_shortfall": -0.09315871364234522,
+  "ar_overbuild": 0.9808503509549186,
+  "continuation_rel_err": 0.28904506139606106,
+  "note": "Q is colored by the real-time leftover spectrum. C is colored by a two-pole continuation of G(\u03c4). Neither number is a hardware job. The 64-rung VW spectrum is not used."
 }

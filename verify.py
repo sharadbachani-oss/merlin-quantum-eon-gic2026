@@ -87,6 +87,74 @@ def main():
     deg2 = [1, 0, 1, 1, 0, 0, 0, 1, 1, 1]
     check("chi=4 plan = Dirac deg-2 plan", sweep[4]["plan"] == deg2)
 
+    print("v5 dynamics crossing")
+    xing_path = ROOT / "results" / "eon_dynamics_crossing.json"
+    check("crossing receipt present", xing_path.exists())
+    if xing_path.exists():
+        xing = json.loads(xing_path.read_text())
+        g = xing["crossing"]["gates"]
+        check("realtime ranks with referee", g["realtime_ranks_with_referee"])
+        check("two imag-time spectra disagree", g["imag_time_two_spectra_disagree"])
+        check("continuation misses realtime line", g["continuation_misses_realtime_line"])
+        check("factorized A6-off ranking fails", g["factorized_wrong_dL_order"])
+        check("cheap local ranking fails", g["cheap_local_wrong_dL_order"])
+        it = xing["imaginary_time"]
+        check("certified leftover line is 0.222",
+              abs(it["realtime_cyc_per_step"] - 2.0 / 9.0) < 1e-9)
+        check("continuation not the realtime line",
+              abs(it["continuation_cyc_per_step"] - it["realtime_cyc_per_step"]) > 0.04)
+        fac = xing["factorized_no_A6_bonds"]
+        check("A6-off cannot rank builds", fac["ranking_fails"])
+        hw = xing["hardware"]
+        fk = hw["full_k_spectrum"]
+        check("full-k leftover spectrum not flown",
+              fk["status"] == "NOT_FLOWN" and fk["job_id"] is None)
+        check("full-k one-command is retrieve-first",
+              fk["protocol"].get("one_command") == "python eon_full_k_leftover.py"
+              and fk["protocol"].get("default", "").startswith("retrieve only"))
+        check("VW 64-rung spectrum not claimed",
+              hw["vw_64rung_spectrum"]["status"] == "NOT_AN_EON_RESULT")
+        check("Aquila map is protocol only",
+              hw["aquila_rydberg"]["status"] == "NOT_FLOWN"
+              and hw["aquila_rydberg"]["job_id"] is None)
+        check("kingston job unchanged",
+              hw["two_point_flown"]["kingston"]["job"] == "daa0dq6rbfbs73ci56bg")
+        check("marrakesh job unchanged",
+              hw["two_point_flown"]["marrakesh"]["job"] == "daa9do6rbfbs73cifa80")
+
+    print("v5 E.ON-native storage")
+    store = json.loads((ROOT / "results" / "eon_storage_sizing.json").read_text())
+    check("storage is leftover spectrum, not a hardware job",
+          store.get("hardware_spectrum_job") is None
+          and store.get("hardware_spectrum_status") == "NOT_FLOWN")
+    check("VW job dropped from storage",
+          store.get("dropped_vw_job") == "daa9pn4e74ec73akj9i0")
+    leftover_cmd = ROOT / "eon_full_k_leftover.py"
+    leftover_rcpt = ROOT / "results" / "eon_full_k_leftover.json"
+    check("full-k one-command present", leftover_cmd.exists())
+    check("full-k leftover receipt present", leftover_rcpt.exists())
+    if leftover_rcpt.exists():
+        lk = json.loads(leftover_rcpt.read_text())
+        check("leftover receipt is protocol-only",
+              lk.get("status") == "NOT_FLOWN" and lk.get("job_id") is None)
+        check("leftover receipt refuses VW job",
+              lk.get("honesty", {}).get("vw_job_refused") == "daa9pn4e74ec73akj9i0")
+        check("two-point jobs are not a leftover series",
+              "daa0dq6rbfbs73ci56bg" in lk.get("honesty", {}).get("two_point_not_a_series", [])
+              and "daa9do6rbfbs73cifa80" in lk.get("honesty", {}).get("two_point_not_a_series", []))
+        nf = lk.get("next_flight_dense", {})
+        check("Mitsubishi closer is dense k=0..8, 29 circuits",
+              nf.get("k") == [0, 1, 2, 3, 4, 5, 6, 7, 8]
+              and nf.get("n_circuits") == 29
+              and nf.get("closes_mitsubishi") is True)
+        check("no invented leftover job id",
+              lk.get("honesty", {}).get("invented_ids") is False)
+    qE = store["results"]["Q"][0]
+    cE = store["results"]["C"][0]
+    check("continuation undersizes vs realtime spectrum",
+          cE < qE and abs(store["continuation_rel_err"] - (qE - cE) / qE) < 1e-9,
+          f"Q={qE:.2f} C={cE:.2f}")
+
     if fails:
         print(f"VERIFY FAIL: {fails}")
         return 1

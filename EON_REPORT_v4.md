@@ -1,10 +1,11 @@
-# Quantum-Enhanced Grid Expansion: Hard Instances, a NISQ Algorithm, a Certified Line Set, and MPS-Poor Evidence
+# Quantum-Enhanced Grid Expansion: Hard Instances, a NISQ Algorithm, a Certified Line Set, and a Dynamics Crossing
 
 **Global Quantum + AI Challenge 2026 — E.ON Enterprise Track**
-**Team: Merlin Digital (GIC 2026 dual-track finalist — Mitsubishi/AIST materials track) · Report v4.3, 2026-08-31**
+**Team: Merlin Digital (GIC 2026 dual-track finalist — Mitsubishi/AIST materials track) · Report v5.0, 2026-09-08**
 
 This page is written to the challenge brief. Each expected outcome is a
-section. Every number has a receipt.
+section. Every number has a receipt. Advantage is **of route**, stated
+and bounded — not a supremacy claim.
 
 ---
 
@@ -22,9 +23,9 @@ at least one instance small enough for current NISQ hardware.
 | Expected outcome (verbatim class) | This package |
 |---|---|
 | 1. Classically hard instances with differing variable counts | 6 / 10 / 14 / 20 / 26 binaries. Proof-grade HiGHS dies at 20 (28% gap) and 26 (34% gap). |
-| 2. Quantum algorithm on a hard instance, NISQ-runnable | 20-qubit framework operator on the candidate lattice. ΔL ranks certified > deg-2 > MILP > no-build. 10q QAOA already flown (ibm_marrakesh). |
+| 2. Quantum algorithm on a hard instance, NISQ-runnable | 20-qubit framework operator \(H=\mu^\star D-A_6\) on the candidate lattice. Real-time leftover spectrum \(S(\omega)\) ranks certified > deg-2 > MILP > no-build. Continuation and \(A_6\)-off dynamics cannot. 10q QAOA already flown (ibm_marrakesh). |
 | 3. Optimal new lines + cost + congestion reduction | Seven lines named below. Capex 11.42. Thermal congestion 77.125 → 1.440 (−98.1%). |
-| 4. MPS simulation gives poor objective value | TT-SVD MPS of the *true* cost: χ < 16 returns the wrong plan (gaps +1.9% to +9.1%). Hardware returns the exact plan. |
+| 4. MPS simulation gives poor objective value | TT-SVD MPS of the *true* cost: \(\chi<16\) returns the wrong plan (gaps +1.9% to +9.1%). Hardware / Dirac return the exact plan. |
 
 ---
 
@@ -77,54 +78,101 @@ Receipts: `results/eon57_dirac_result.json`, `results/eon57_fit.json`.
 
 **Algorithm: the framework operator on the grid, 20 qubits.**
 
-The candidate graph is a 10-rung lattice. Exact per-rung ground
-prep (RY(θ*)–CNOT–H⊗H). Existing slack corridors (buses 0–1, 0–4,
-1–2) are always in the Hamiltonian. Distance-2 closures enter only
-when built. N−1 is an X-quench on the slack corridor. The scored
-object is the slack-star leftover series
-L(k) = rms(C* − ⟨ZZ⟩) on those three existing rungs. Builds are
-Hamiltonian support, not QUBO bits.
+The candidate graph is a 10-rung lattice of the derived operator
+\(H=\mu^\star D-A_6\), \(\mu^\star=3/(3-\sqrt{5})\). Exact per-rung
+ground prep (RY(\(\theta^\star\))–CNOT–H⊗H, \(\theta^\star=\pi/2-2\chi\)).
+Existing slack corridors (buses 0–1, 0–4, 1–2) are always in the
+Hamiltonian. Distance-2 closures enter only when built. N−1 is an
+X-quench on the slack corridor. Builds are Hamiltonian support, not
+QUBO bits.
 
-Initial absorption ΔL = L(0) − L(1) ranks the four named plans in
-the same order as the physics referee:
+The scored object is the slack-star leftover series
+\(L(k)=\mathrm{rms}(C^\star-\langle ZZ\rangle)\) on those three existing
+rungs, and its spectrum \(S(\omega)=|\mathrm{DFT}[L-\mathrm{mean}]|^2\).
+A better build absorbs the contingency off the existing star. Initial
+absorption \(\Delta L=L(0)-L(1)\) ranks the four named plans in the
+same order as the physics referee:
 
-| plan | ΔL | referee congestion |
-|---|---:|---:|
-| all-build | +0.146 | 1.452 |
-| **certified** | **+0.140** | **1.440** |
-| degree-2 | +0.124 | 1.625 |
-| MILP + cand 3 | +0.114 | 2.322 |
-| MILP + cand 2 | +0.104 | 1.734 |
-| MILP + cand 5 | +0.098 | 1.787 |
-| MILP | +0.042 | 2.495 |
-| no-build | −0.042 | 77.125 |
+| plan | \(\Delta L\) | leftover \(S(\omega)\) line (cyc/step) | referee congestion |
+|---|---:|---:|---:|
+| **certified** | **+0.140** | **0.222** | **1.440** |
+| degree-2 | +0.124 | 0.333 | 1.625 |
+| MILP | +0.042 | 0.444 | 2.495 |
+| no-build | −0.042 | 0.444 | 77.125 |
 
-Each certified closure, added alone to the MILP set, raises ΔL.
-Together they recover the certified plan. All-build buys +0.006
-more absorption and a *worse* thermal number — the field does
-not want junk lines.
+Each certified closure, added alone to the MILP set, raises \(\Delta L\).
+All-build buys +0.006 more absorption and a *worse* thermal number — the
+field does not want junk lines. Receipt: `results/eon_nisq_field.json`.
 
-Statevector gate: `results/eon_nisq_field.json`. Hardware,
-job `daa0dq6rbfbs73ci56bg` on ibm_kingston (10 × 8,192 shots;
-max 126 two-qubit gates), graded from raw:
+### Advantage of route (the Mitsubishi-class crossing)
 
-| plan | frozen ΔL | hardware ΔL |
-|---|---:|---:|
-| certified | +0.140 | **+0.113** |
-| degree-2 | +0.124 | −0.006 |
-| MILP | +0.042 | **+0.045** |
-| no-build | −0.042 | **−0.025** |
+For a DSO the industrially decisive question after a contingency is not
+the static MILP number. It is **how the leftover rings** — the leftover
+spectrum \(S(\omega)\). The certified plan, the degree-2 truncation, and
+the MILP plan are three different dynamical objects: principal lines
+**0.222 / 0.333 / 0.444** cycles per Trotter step.
 
-Certified is the best absorber on the device and beats MILP.
-No-build grows. Null (no quench) leftover is 0.031 vs 0.784
-with quench. Detuned control moved. **Hardware prefers the
-certified lines over MILP and over do-nothing.** A fixed-layout,
-equal-structure re-flight on a second device (ibm_marrakesh,
-job `daa9do6rbfbs73cifa80` — every arm the same physical circuit,
-only coupling angles differ) reproduces the plan-class
-separation with uniform per-rung visibility 0.93–0.98 and lands
-the degree-2 arm on its frozen value (+0.127 vs +0.124
-predicted): the ranking physics replicates cross-device.
+The scalable classical route to a real-frequency leftover spectrum is
+imaginary-time leftover \(G(\tau)\) plus analytic continuation. That
+continuation is **ill-posed**. On the certified arm, two two-pole models
+fit the same \(G(\tau)\) to 0.057 / 0.058 max residual and disagree on
+the principal decay (1.696 vs 1.592). Neither recovers the real-time
+line: continuation maps to **0.270** cycles/step against the real-time
+**0.222**. Receipt: `results/eon_dynamics_crossing.json`.
+
+Two further cheap classical dynamics fail as ranking engines:
+
+- **Drop the residual \(A_6\) electrical bonds** (factorized rungs).
+  Every named plan returns the same \(\Delta L=+0.514\). Without the
+  derived kinetic term the field cannot tell a certified closure from
+  do-nothing.
+- **Product-rung projection** (rebuild a product of per-rung 2-qubit
+  states after every step). \(\Delta L\) order can survive; the
+  degree-2 principal line does not (0.333 → 0.444).
+
+A mid-cut MPS truncation of the 20q state (\(\chi=1,2,4\) on qubits
+0–9 | 10–19) still ranks \(\Delta L\) correctly. That cut is kind: the
+slack star sits on one side. It is shipped as a **control**, not as the
+cheap attack.
+
+This is an **advantage of route**. Real-time evolution of
+\(H=\mu^\star D-A_6\) produces \(S(\omega)\) by Fourier transform with
+no continuation step. Imaginary-time + Padé/Prony, \(A_6\)-off
+dynamics, and product-rung projection cannot cheaply fake that spectrum
+or the ranking it induces. The claim holds at this 20-qubit instance
+and does not expire if a faster classical computer arrives tomorrow —
+the continuation step stays ill-posed. **What we do not claim:**
+absolute-energy supremacy, or a 100-qubit hardware-vs-MPS result.
+
+### Hardware on today's devices (partial ranking, no invented jobs)
+
+Statevector gate: `results/eon_nisq_field.json`. Two-point \(\Delta L\)
+hardware, graded from raw:
+
+| plan | frozen \(\Delta L\) | ibm_kingston `daa0dq6rbfbs73ci56bg` | ibm_marrakesh `daa9do6rbfbs73cifa80` |
+|---|---:|---:|---:|
+| certified | +0.140 | **+0.113** | +0.120 |
+| degree-2 | +0.124 | −0.006 | **+0.127** |
+| MILP | +0.042 | **+0.045** | +0.073 |
+| no-build | −0.042 | **−0.025** | +0.029 |
+
+Kingston: certified is the best absorber and beats MILP; no-build
+grows. Null leftover 0.031 vs 0.784 with quench. Detuned control
+moved. Degree-2 collapsed — the frozen order is **not** recovered.
+Marrakesh (fixed layout, equal structure, inverted readout): degree-2
+lands on its frozen value (+0.127 vs +0.124), visibility 0.93–0.98,
+but the device order is deg-2 > certified. **Hardware prefers certified
+over MILP and over do-nothing. The degree-2 arm is device-dependent.
+The ranking is partial; both flights are recorded as P1 LOSS.**
+
+A full-\(k\) leftover series on hardware — the flight that would
+Fourier-transform to \(S(\omega)\) on the device — is **not flown**.
+One-command (retrieve only, no paid submit):
+`python eon_full_k_leftover.py`. The protocol and expected signature
+are in `eon_dynamics_crossing.json` → `hardware.full_k_spectrum`
+and `results/eon_full_k_leftover.json`. The Mitsubishi-closing flight
+is certified / MILP / no-build at \(k=0..8\) (29 circuits, 8192 shots,
+open Heron). No job ID is assigned.
 
 **Letter of the brief (already on hardware).** 10-qubit QAOA from
 the degree-2 shadow, ibm_marrakesh job `d9sqks1dsedc73ai3o30`
@@ -132,15 +180,18 @@ the degree-2 shadow, ibm_marrakesh job `d9sqks1dsedc73ai3o30`
 certified bitstring. That is the small-instance sample. The
 algorithm we are submitting is the 20q operator above.
 
-**Scalability to utility scale (>100 qubits), demonstrated not
-projected.** The operator's unit is the rung (one candidate = 2 qubits);
-scaling means more rungs on the same heavy-hex fabric. The identical
-operator family has been executed at **64 rungs — 128+ qubits — on IBM
-Heron** (job `daa9pn4e74ec73akj9i0`, 33 circuits × 32,768 shots, full
-depth-15 series graded), meeting the brief's >100-qubit utility-scale
-criterion with a receipt rather than an extrapolation. The 20-qubit
-card and the 128-qubit flight bracket the brief's requested range with
-one algorithm.
+**Native maps, today's hardware.** Heavy-hex (IBM Heron): flown, two
+devices, two-point leftover. Dirac-3: flown (annex below). Aquila
+Rydberg: the rung map is exact (\(V=2\mu^\star E_u\), \(\Delta=\mu^\star E_u\),
+\(\Omega=2E_u\), fable 1e-9); FOV+C6 binds at 12 pairs / 24 atoms.
+**No Aquila job is in this package.** Protocol only.
+
+**Scalability.** The operator's unit is the rung (one candidate = 2
+qubits); scaling is tiling on the same heavy-hex fabric. A 64-rung
+(128-qubit) leftover series is the same compilation. It is a
+**protocol in this package, not a receipt.** A sister-track Heron
+flight of the same operator family exists; we do not import its
+spectrum as an E.ON result (dropped job `daa9pn4e74ec73akj9i0`).
 
 **Dirac-3 (annex, not the algorithm).** Native degree-5 anneal
 returned the same certified plan (job `6a79a72508442f441bbb5e56`).
@@ -157,8 +208,8 @@ control.
 | QAOA on ibm_marrakesh | same | 83.436 | 0.000 | 1.440 / 7 / 137 |
 | Dirac-3 degree-2 | 1 0 1 1 0 0 0 1 1 1 | 90.995 | +9.1% | 1.625 / 8 / 133 |
 | HiGHS disjunctive TEP | 1 0 0 0 0 0 0 1 1 1 | 131.87 | +58% | 2.495 / 19 / 293 |
-| MPS χ = 4 on true cost | 1 0 1 1 0 0 0 1 1 1 | 90.995 | +9.1% | (same wrong plan as deg-2) |
-| MPS χ = 1 on true cost | 1 0 1 1 1 1 1 1 1 1 | 87.466 | +4.8% | wrong plan |
+| MPS \(\chi=4\) on true cost | 1 0 1 1 0 0 0 1 1 1 | 90.995 | +9.1% | (same wrong plan as deg-2) |
+| MPS \(\chi=1\) on true cost | 1 0 1 1 1 1 1 1 1 1 | 87.466 | +4.8% | wrong plan |
 | No-build | 0…0 | 3856.27 | — | 77.125 / 227 / 423 |
 
 Jobs: Dirac native `6a79a72508442f441bbb5e56`; Dirac deg-2
@@ -211,16 +262,16 @@ They are different line sets.
 ## Outcome 4 — MPS simulation gives poor objective value
 
 The brief asks for this in those words. Two measurements, one
-instance family.
+instance family. A third, on the *dynamics*, is in Outcome 2.
 
 ### 4a. MPS as a solver of the instance (the letter of the outcome)
 
 Compress the *true* 10-bit cost tensor by TT-SVD to bond dimension
-χ, take the argmin of the compressed tensor, re-grade that plan on
+\(\chi\), take the argmin of the compressed tensor, re-grade that plan on
 the exact referee. That is the expansion plan an MPS-truncated
 model of the instance returns.
 
-| χ | plan | exact objective | gap | verdict |
+| \(\chi\) | plan | exact objective | gap | verdict |
 |---:|---|---:|---:|---|
 | 1 | 1 0 1 1 1 1 1 1 1 1 | 87.466 | **+4.8%** | wrong plan |
 | 2 | 1 0 1 1 0 1 1 1 1 1 | 85.654 | **+2.7%** | wrong plan |
@@ -231,35 +282,32 @@ model of the instance returns.
 
 Receipt: `results/eon_rubric_mps.json` → `eon14_hard.mps_chi_sweep`.
 
-**MPS gives a poor objective at every χ that cannot hold the tensor.**
-The mid-cut rank of this objective is 32/32. χ = 16 is the first
-lossless solver. Dirac-3 and the flown QAOA return the χ = 16 plan
+**MPS gives a poor objective at every \(\chi\) that cannot hold the tensor.**
+The mid-cut rank of this objective is 32/32. \(\chi=16\) is the first
+lossless solver. Dirac-3 and the flown QAOA return the \(\chi=16\) plan
 without building that MPS.
 
 At 6 binaries (eon14_easy) the same method is already lossless at
-χ = 2 (gap 0); χ = 1 is **+75.8%**. Differing variable counts:
+\(\chi=2\) (gap 0); \(\chi=1\) is **+75.8%**. Differing variable counts:
 cheap MPS works on the easy instance and fails on the certified one.
 
-### 4b. Why χ has to be that large — the objective MPS cannot hold
+### 4b. Why \(\chi\) has to be that large — the objective MPS cannot hold
 
 Operator Schmidt rank of the true cost saturates the exponential
 envelope: **8/8 at 6 binaries, 32/32 at 10 binaries.** The degree-2
 shadow every QUBO/QAOA-on-QUBO pipeline holds is rank 5 / 7.
 Receipt: `results/eon_v4_advantage.json` → `schmidt_scaling`.
 
-This is the stronger form of the brief’s MPS line. MPS does not
-merely return a poor value — below χ = 16 it **cannot represent
-the instance**, and the plan it then returns is the wrong
-reinforcement set. χ = 4 recovers the same wrong set as a
-quadratic QUBO. That is the motivation for quantum hardware that
-accepts the uncompressed polynomial (Dirac-3) and for a NISQ
-variational arm that at least samples the certified bitstring
-(QAOA).
+This is the representation wall. It **motivates** the hardware; it is
+not itself the advantage of route. The route claim is Outcome 2:
+continuation and \(A_6\)-off dynamics cannot recover the leftover
+spectrum. Outcome 4 says why a compressed *objective* is the wrong
+object to hold.
 
 ### 4c. What we do not claim (the QAOA-circuit MPS)
 
 Aer MPS of the *degree-2 QAOA circuit* at 10 qubits ties the
-hardware from χ ≥ 2 (`results/eon_qaoa_result.json`). That is
+hardware from \(\chi\ge 2\) (`results/eon_qaoa_result.json`). That is
 expected: the circuit is the shadow, and the shadow is
 low-rank. Publishing the tie is the control that keeps Outcome 4
 honest. The poor-objective evidence is 4a/4b, on the true
@@ -279,30 +327,25 @@ together. Receipt: `eon_v4_advantage.json` → `held_out`.
 worsening voltage versus no-build. The certified plan clears 286
 voltage violations; MILP clears 130. Receipt: `hidden_congestion`.
 
-**Storage sizing under the measured fluctuation class (quantum input
-to DER planning).** The brief names the cost of classical uncertainty:
-operators are *"forced toward more conservative planning."* Here that
-cost is measured. Firming storage for the decisive microgrid (mg9,
-20.85 p.u. load, 24 h horizon, 10% rms collective fluctuation) sized
-against three fluctuation models at *identical rms power* (3 seeds ×
-2,000 realizations): white-noise scenario planning requires 12.3 p.u.h —
-**a 24% energy shortfall** against the true requirement (the battery runs
-empty in service); an AR surrogate matched to variance and
-autocorrelation requires 194.3 p.u.h — **a 12× over-build**, plus 2.9×
-excess power capacity. Against the **measured collective spectrum**
-(real-time series computed on quantum hardware, k=0–15 on a 64-rung
-interacting lattice, collective line 0.0625 cyc/step reproduced on two
-devices; job `daa9pn4e74ec73akj9i0`), the requirement is **16.18 ± 0.02
-p.u.h energy, 4.40 ± 0.01 p.u. power**. Storage capacity is the integral
-of low-frequency spectral power — a quantity no moment-matched surrogate
-carries; sizing it correctly requires the spectrum itself, and the
-spectrum is the quantum deliverable. The 12× over-build *is* the
-conservative planning the brief describes — priced here, and removed by
-the measured spectrum. Receipt: `eon_storage_sizing.json`.
+**Storage sizing under the E.ON leftover spectrum (statevector, not a
+hardware job).** Firming storage for the decisive microgrid (mg9,
+20.85 p.u. load, 24 h, 10% rms) is sized against four fluctuation
+models at identical rms (3 seeds × 400 draws). Colored by the
+**real-time certified leftover spectrum** (principal line 0.222
+cyc/step, this package, no cloud job): **9.76 ± 0.91 p.u.h**. Colored
+by a two-pole **continuation** of the same arm’s \(G(\tau)\):
+**6.94 ± 0.69 p.u.h — 29% undersize**. White-noise 10.67 ± 2.40;
+AR(1) matched to leftover lag-1 9.57 ± 2.12. At this 20q resolution
+white/AR sit near the real-time number; the decision-changing error
+is the continuation. Receipt: `eon_storage_sizing.json`. A previous
+draft sized storage against a 64-rung sister-track spectrum
+(`daa9pn4e74ec73akj9i0`). That job is **not an E.ON result** and is
+not cited here.
 
 **20q field circuits.** Same operator as Outcome 2. Derived
-waveforms frozen in `eon_nisq_field.json`. Heron flight is a
-new job on go — not a recaption of A1.
+waveforms frozen in `eon_nisq_field.json`. Full-\(k\) leftover on
+Heron is a new job on go — not a recaption of any sister-track
+flight.
 
 ---
 
@@ -311,21 +354,29 @@ new job on go — not a recaption of A1.
 - The certified plan's value is robustness: −40.5% held-out congestion
   and 286 voltage violations cleared, at 1.60× the MILP plan's capex —
   the resilience-per-euro trade a DSO prices, both numbers on one receipt.
-- The 20q field ranking ships statevector-closed with the hardware
-  replication above; deeper Heron series are Phase II flights.
-- Outcome 4's evidence is the true-cost sweep — the instance itself,
-  not any single circuit family, is what MPS cannot hold below χ=16.
+- The advantage is **of route**: real-time leftover \(S(\omega)\) versus
+  ill-posed continuation and \(A_6\)-off dynamics. It is not supremacy
+  at 10 binaries and not a 100-qubit hardware-vs-MPS result.
+- Hardware two-point ranking is **partial** (degree-2 collapsed on
+  kingston, inverted vs certified on marrakesh). Full-\(k\) leftover
+  \(S(\omega)\) on a device is a protocol, not a job.
+- Outcome 4 remains the true-cost MPS sweep. Representation is the
+  supporting wall; dynamics is the crossing.
 
 ## Reproducibility
 
 ```
-python verify.py              # two-build + Schmidt + residuals (~1 min)
-python eon_rubric_mps.py      # line set + MPS χ-sweep (~30 s)
-python eon_v4_advantage.py    # held-out, hidden voltage, Schmidt (~45 s)
-python eon_nisq_field.py      # 20q operator, ΔL gate (~90 s)
+python verify.py                 # two-build + Schmidt + crossing gates (~1 min)
+python eon_rubric_mps.py         # line set + MPS chi-sweep (~30 s)
+python eon_v4_advantage.py       # held-out, hidden voltage, Schmidt (~45 s)
+python eon_nisq_field.py         # 20q operator, Delta-L gate (~90 s)
+python eon_dynamics_crossing.py  # leftover S(w) vs continuation / A6-off (~5 min)
+python eon_full_k_leftover.py    # retrieve leftover series; default NO submit
 ```
 
-No quantum credentials to audit. Heron submit needs a human go.
+No quantum credentials to audit. Heron submit of the full-\(k\)
+leftover series needs a human go:
+`EON_FULL_K_SUBMIT=1 python eon_full_k_leftover.py --submit --k-grid dense`.
 Phase I closes 2026-09-15.
 
 **Compatibility and runtime (per §5.3 of the challenge statement).**
@@ -335,10 +386,10 @@ the E.ON team can execute and validate every hardware result in
 standard Qiskit by pointing the flight scripts at any backend
 (`IBM_QUANTUM_CRN` environment variable; backend name as argument).
 The Dirac-3 arm ships its polynomial files and job IDs for independent
-resubmission. End-to-end runtimes: classical audit ~3 minutes; each
-hardware job minutes of QPU time; the full pipeline replays well inside
-the brief's few-hour limit.
+resubmission. End-to-end runtimes: classical audit ~3 minutes; the
+dynamics crossing ~5 minutes; each hardware job minutes of QPU time;
+the full pipeline replays well inside the brief's few-hour limit.
 
 ---
 *Merlin Digital. The expansion objective is a congestion field.
-MPS cannot hold it. The NISQ algorithm is that field.*
+The leftover spectrum is the route. Continuation cannot hold it.*

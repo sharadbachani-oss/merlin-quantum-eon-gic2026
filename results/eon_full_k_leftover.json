@@ -1,0 +1,863 @@
+{
+  "card": "EON FULL-k LEFTOVER \u2192 S(\u03c9) PROTOCOL",
+  "generated": "2026-09-08T12:17:46",
+  "status": "NOT_FLOWN",
+  "job_id": null,
+  "operator": "H = \u03bc* D \u2212 A6",
+  "industrial_object": "N-1 quench leftover series L(k) on the slack star; S(\u03c9) = |DFT[L \u2212 mean]|\u00b2",
+  "k_grid": "protocol",
+  "k": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    8
+  ],
+  "arms": [
+    "certified",
+    "milp",
+    "no_build"
+  ],
+  "controls": [
+    "certified_null_k0",
+    "certified_detuned_dt0.36_k1"
+  ],
+  "names": [
+    "certified_k0",
+    "certified_k1",
+    "certified_k2",
+    "certified_k4",
+    "certified_k6",
+    "certified_k8",
+    "milp_k0",
+    "milp_k1",
+    "milp_k2",
+    "milp_k4",
+    "milp_k6",
+    "milp_k8",
+    "no_build_k0",
+    "no_build_k1",
+    "no_build_k2",
+    "no_build_k4",
+    "no_build_k6",
+    "no_build_k8",
+    "certified_null_k0",
+    "certified_detuned_dt0.36_k1"
+  ],
+  "n_circuits": 20,
+  "shots": 8192,
+  "dt": 0.3,
+  "dt_ctrl": 0.36,
+  "chain": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    19,
+    35,
+    34,
+    33
+  ],
+  "frozen_sv_leftover": {
+    "certified": [
+      0.8089484842358969,
+      0.6688390064016452,
+      0.6600181847839608,
+      0.6435870562796019,
+      0.7012028806476287,
+      0.7169727263094515
+    ],
+    "milp": [
+      0.808948484235898,
+      0.7669977494341164,
+      0.651978238733336,
+      0.664360132159543,
+      0.6501195092830361,
+      0.6240747372069194
+    ],
+    "no_build": [
+      0.8089484842358982,
+      0.8513173978547368,
+      0.8342263262013199,
+      0.4575683118764478,
+      0.5174857958817264,
+      0.7774795321876431
+    ]
+  },
+  "frozen_sv_omega": 0.2222222222222222,
+  "continuation_omega": 0.26995126885971477,
+  "logical_2q_estimate": {
+    "certified": {
+      "0": 7,
+      "1": 35,
+      "2": 63,
+      "4": 119,
+      "6": 175,
+      "8": 231
+    },
+    "milp": {
+      "0": 4,
+      "1": 14,
+      "2": 24,
+      "4": 44,
+      "6": 64,
+      "8": 84
+    },
+    "no_build": {
+      "0": 3,
+      "1": 9,
+      "2": 15,
+      "4": 27,
+      "6": 39,
+      "8": 51
+    }
+  },
+  "expected_signature": "Certified-arm DFT principal line matches the statevector \u03c9*=0.222 after one damping envelope; continuation of the same arm's imag-time G(\u03c4) misses \u03c9*. Do not assign a job id until flown.",
+  "local_search": {
+    "hits": [],
+    "rejects": []
+  },
+  "ibm_search": {
+    "available": true,
+    "examined": 80,
+    "match": null,
+    "rejects": [
+      {
+        "job": "daba21jvpcac73ddh9h0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 13:55:18.578532+04:00",
+        "reason": "HSBC 87q QBM \u2014 not E.ON leftover"
+      },
+      {
+        "job": "dab7i5mrrl7c7386gfh0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 11:04:54.175654+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "dab6vi34clkc73fij1ig",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 10:25:12.616896+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "dab6therrl7c7386flo0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 10:20:53.275374+04:00",
+        "reason": "HSBC 128q generative \u2014 not E.ON leftover"
+      },
+      {
+        "job": "dab6q3jvpcac73dddf5g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 10:13:34.846159+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "daaui7bvpcac73dd29r0",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-09-01 00:50:37.711139+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "daauh2rvpcac73dd28d0",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-09-01 00:48:11.990097+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "daaufa34clkc73fi79og",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-09-01 00:44:24.171273+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "daauekb4clkc73fi78s0",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-09-01 00:42:57.261843+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "daauddbvpcac73dd2430",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-09-01 00:40:21.714837+04:00",
+        "reason": "Cleveland-matched \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daaucejvpcac73dd232g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-09-01 00:38:21.617350+04:00",
+        "reason": "HSBC 128q feature map \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daatu7j4clkc73fi68vg",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-09-01 00:07:58.920121+04:00",
+        "reason": "Cleveland qallo \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa9pn4e74ec73akj9i0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-31 01:13:00.612538+04:00",
+        "reason": "VW 64-rung spectrum \u2014 NOT_AN_EON_RESULT"
+      },
+      {
+        "job": "daa9fnerbfbs73cifcjg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-31 00:51:41.226650+04:00",
+        "reason": "Cleveland IBM walk \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa9fgurbfbs73cifcc0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-31 00:51:15.435741+04:00",
+        "reason": "Cleveland IBM sector \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa9f09qtnsc73d2db5g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-31 00:50:09.630754+04:00",
+        "reason": "Cleveland IBM scout \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa9do6rbfbs73cifa80",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-31 00:47:28.809467+04:00",
+        "reason": "marrakesh two-point \u0394L (k=0,1 only)"
+      },
+      {
+        "job": "daa3osce74ec73akcmb0",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "CANCELLED",
+        "created": "2026-08-30 18:21:37.994351+04:00",
+        "reason": "cancelled kingston \u2014 not a leftover series"
+      },
+      {
+        "job": "daa1akce74ec73ak9qcg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 15:34:41.408394+04:00",
+        "reason": "deep3 main \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa19lerbfbs73ci66eg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 15:32:37.677740+04:00",
+        "reason": "deep3 scout \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa0hburbfbs73ci5ai0",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 14:40:47.429993+04:00",
+        "reason": "deep2 scout \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa0dq6rbfbs73ci56bg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 14:33:12.835542+04:00",
+        "reason": "kingston two-point \u0394L (k=0,1 only)"
+      },
+      {
+        "job": "daa0bqce74ec73ak8mgg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 14:28:58.007528+04:00",
+        "reason": "deep main \u2014 not E.ON leftover"
+      },
+      {
+        "job": "daa0bc1qtnsc73d231v0",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 14:28:00.785929+04:00",
+        "reason": "deep scout \u2014 not E.ON leftover"
+      },
+      {
+        "job": "da9vgsmrbfbs73ci44d0",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 13:31:30.330847+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9vdfmrbfbs73ci40ng",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-30 13:24:14.740947+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9vblkjbipc73ffaio0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-30 13:20:22.855313+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9uoierbfbs73ci3aq0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-30 12:39:37.724030+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9ujnkjbipc73ff9ppg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 12:29:18.993545+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9m5purbfbs73chqglg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 02:53:27.666856+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9m5berbfbs73chqg80",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 02:52:29.447415+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9lqeerbfbs73chq63g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-30 02:29:13.150404+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9lp8pqtnsc73d1o5gg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 02:26:43.339641+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9llqerbfbs73chq1og",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 02:19:21.557611+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9l9rkjbipc73ff0aqg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 01:53:50.845140+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9l3t1qtnsc73d1nhd0",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 01:41:08.910045+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9l2t9qtnsc73d1nfrg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 01:39:01.149341+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9krq4jbipc73fevsfg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 01:23:52.278969+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9krc4jbipc73fevs30",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-30 01:22:56.809557+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9eoe6rbfbs73chiq0g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-29 18:27:04.570120+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9drm4jbipc73feogfg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-29 17:25:44.653730+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "da9dr84e74ec73ajlgm0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-29 17:24:48.472657+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9u6m0k98n5s7392fa8g",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-12 16:45:54.355082+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9t1td7tfhrs73dtc280",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-10 22:55:48.257150+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9t0k91dsedc73aia9eg",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 21:28:04.648177+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9t0ja9dsedc73aia700",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 21:26:01.618492+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9t01lnpemts73cu81p0",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 20:48:22.544800+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9sqks1dsedc73ai3o30",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 14:39:44.856514+04:00",
+        "reason": "E.ON 10q QAOA, not leftover L(k)"
+      },
+      {
+        "job": "d9solsgpdb6s73e6a6q0",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 12:25:23.068636+04:00",
+        "reason": "Airbus QLGA \u2014 not E.ON leftover"
+      },
+      {
+        "job": "d9solbntfhrs73dt1t40",
+        "is_leftover_series": false,
+        "backend": "ibm_marrakesh",
+        "status": "DONE",
+        "created": "2026-08-10 12:24:14.402962+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rq7jgpdb6s73e58ppg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-09 01:46:54.258882+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rq769dsedc73ah0ceg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-09 01:46:01.182878+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rm4j9dsedc73agrb70",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 21:07:25.638753+04:00",
+        "reason": "VW fez spectroscopy \u2014 not E.ON leftover"
+      },
+      {
+        "job": "d9rm47opdb6s73e53kqg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 21:06:39.958634+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rjigvpemts73csmsj0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 18:12:19.085957+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rjhvopdb6s73e50lh0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 18:11:11.480679+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rjh80pdb6s73e50k20",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 18:09:36.415045+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rjgmftfhrs73droetg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 18:08:25.328768+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rhkv1dsedc73aglmhg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 16:01:00.541700+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rhki7pemts73csk870",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 16:00:08.232772+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rdfb1dsedc73agh5ng",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-08 11:15:56.082969+04:00",
+        "reason": "A1/VW 64-rung collective \u2014 not E.ON leftover"
+      },
+      {
+        "job": "d9rdetfpemts73csfoeg",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-08 11:15:01.676266+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rdbbgpdb6s73e4p9hg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 11:07:26.560226+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rda38pdb6s73e4p7ng",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 11:04:45.289872+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9rd9aftfhrs73drh3tg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-08 11:03:05.816698+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9qdnd0pdb6s73e3e2c0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 23:08:36.970339+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9qbjq97s9kc73av3cug",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-06 20:44:25.805152+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9qbitnv9q4s73bi2iag",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-06 20:42:30.515888+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9q4f0a42q2c73b8nkl0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 12:36:17.762236+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9q44ovv9q4s73bhoq8g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 12:14:27.332948+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9ps7iklp7es73b4633g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 03:14:18.192607+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9ps72a42q2c73b8d3fg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 03:13:13.499510+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9ps5o4lp7es73b460u0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 03:10:24.116219+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9ps50h7s9kc73auf9mg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-06 03:08:50.164983+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9pp5mq42q2c73b89d90",
+        "is_leftover_series": false,
+        "backend": "ibm_kingston",
+        "status": "DONE",
+        "created": "2026-08-05 23:45:31.237979+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9poqpfv9q4s73bhaav0",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-05 23:22:13.726311+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9pop8fv9q4s73bha91g",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-05 23:18:58.005958+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9pl6ocpcc1s73a7rfig",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-05 19:14:41.736022+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9pl6dkpcc1s73a7rf40",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-05 19:13:58.675482+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      },
+      {
+        "job": "d9pkftrbvhrs73a2p0kg",
+        "is_leftover_series": false,
+        "backend": "ibm_fez",
+        "status": "DONE",
+        "created": "2026-08-05 18:25:59.108741+04:00",
+        "reason": "unlabeled on CRN \u2014 no leftover-series receipt; not claimed"
+      }
+    ],
+    "error": null
+  },
+  "graded": null,
+  "honesty": {
+    "no_supremacy": true,
+    "vw_job_refused": "daa9pn4e74ec73akj9i0",
+    "two_point_not_a_series": [
+      "daa0dq6rbfbs73ci56bg",
+      "daa9do6rbfbs73cifa80"
+    ],
+    "qaoa_not_a_series": "d9sqks1dsedc73ai3o30",
+    "invented_ids": false
+  },
+  "next_flight_dense": {
+    "closes_mitsubishi": true,
+    "command": "EON_FULL_K_SUBMIT=1 python eon_full_k_leftover.py --submit --k-grid dense",
+    "retrieve_command": "python eon_full_k_leftover.py",
+    "arms": [
+      "certified",
+      "milp",
+      "no_build"
+    ],
+    "k": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "controls": [
+      "certified_null_k0",
+      "certified_detuned_dt0.36_k1"
+    ],
+    "n_circuits": 29,
+    "shots": 8192,
+    "backend": "open Heron (fez / kingston / marrakesh), lowest queue",
+    "layout": "fixed CHAIN from marrakesh two-point (seed_transpiler=21)",
+    "dd": "XpXm",
+    "compilation": "eon_nisq_field.qiskit_circuit \u2014 same operator as the SV leftover",
+    "twoq_wall": 370,
+    "twoq_note": "v1 certified k=1 was 114 two-qubit gates. Linear scaling puts certified k\u22654 over the v1 370 CX guard. Dense k=8 is the Mitsubishi-closing series; the human go waives that guard or accepts the queue/depth risk. Do not interpolate a 2-point \u0394L flight and call it S(\u03c9).",
+    "grade": "Certified-arm DFT principal line is 0.222 after one damping envelope. Continuation of the same arm's G(\u03c4) still misses (0.270). Two-point jobs cannot host that bin.",
+    "why_dense": "SV S(\u03c9) is |DFT[L(k=0..8) \u2212 mean]|\u00b2. The 0.222 line is the k=2/9 bin of a 9-sample series. The frozen 6-k subset is not uniform and cannot host that bin without interpolation.",
+    "submit_gate": "EON_FULL_K_SUBMIT=1",
+    "default": "NO paid submit"
+  },
+  "next_flight_protocol": {
+    "closes_mitsubishi": false,
+    "command": "EON_FULL_K_SUBMIT=1 python eon_full_k_leftover.py --submit",
+    "retrieve_command": "python eon_full_k_leftover.py",
+    "arms": [
+      "certified",
+      "milp",
+      "no_build"
+    ],
+    "k": [
+      0,
+      1,
+      2,
+      4,
+      6,
+      8
+    ],
+    "controls": [
+      "certified_null_k0",
+      "certified_detuned_dt0.36_k1"
+    ],
+    "n_circuits": 20,
+    "shots": 8192,
+    "backend": "open Heron (fez / kingston / marrakesh), lowest queue",
+    "layout": "fixed CHAIN from marrakesh two-point (seed_transpiler=21)",
+    "dd": "XpXm",
+    "compilation": "eon_nisq_field.qiskit_circuit \u2014 same operator as the SV leftover",
+    "twoq_wall": 370,
+    "twoq_note": "v1 certified k=1 was 114 two-qubit gates. Linear scaling puts certified k\u22654 over the v1 370 CX guard. Dense k=8 is the Mitsubishi-closing series; the human go waives that guard or accepts the queue/depth risk. Do not interpolate a 2-point \u0394L flight and call it S(\u03c9).",
+    "grade": "Certified-arm DFT principal line is 0.222 after one damping envelope. Continuation of the same arm's G(\u03c4) still misses (0.270). Two-point jobs cannot host that bin.",
+    "why_dense": "SV S(\u03c9) is |DFT[L(k=0..8) \u2212 mean]|\u00b2. The 0.222 line is the k=2/9 bin of a 9-sample series. The frozen 6-k subset is not uniform and cannot host that bin without interpolation.",
+    "submit_gate": "EON_FULL_K_SUBMIT=1",
+    "default": "NO paid submit"
+  }
+}

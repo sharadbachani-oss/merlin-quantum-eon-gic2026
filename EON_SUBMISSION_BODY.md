@@ -1,6 +1,6 @@
 # Quantum-Enabled Grid Expansion Planning for Distribution System Energy Networks
 
-**Global Quantum + AI Challenge 2026 — E.ON Enterprise Challenge · Team Merlin Digital (GIC 2026 dual-track finalist — Mitsubishi/AIST materials track) · 2026-08-31**
+**Global Quantum + AI Challenge 2026 — E.ON Enterprise Challenge · Team Merlin Digital (GIC 2026 dual-track finalist — Mitsubishi/AIST materials track) · Report v5.0 · 2026-09-08**
 
 This submission answers the challenge statement section by section, in its
 own terms. Every number carries a receipt in the accompanying package
@@ -48,32 +48,55 @@ toward more conservative planning."*
 ### The quantum algorithm, benchmarked on a hard instance
 
 **On the hard rung.** For eon57_util (the 20-variable instance above), the
-expansion objective was fitted as a native degree-3 polynomial (holdout
-Spearman 0.9999 against 6,001 exact referee evaluations) and executed on a
+expansion objective was fitted as a polynomial surrogate over 6,001 exact
+referee evaluations (**degree 2 as emitted to the device**; holdout
+Spearman **0.9993**, holdout mean relative error 0.025) and executed on a
 QCi Dirac-3 quantum annealer. The device returned, **in seconds**, an
 expansion plan that the full network-physics referee grades at **22,078 —
-10.4% better than the referee grade of the plan the timed-out MILP
+10.44% better than the referee grade of the plan the timed-out MILP
 produced in 901 seconds (24,652)**, and better than all 6,001
 referee-graded classical samples. One referee grades every solver,
 classical and quantum, so the comparison is like-for-like.
+
+*Scope of this rung, stated precisely.* Both submitted arms on this
+instance returned the **identical** plan and objective, and the receipt
+records `native_degree: 2` with
+`P2_native_beats_deg2: false`
+(`results/eon57_dirac_result.json`). This rung therefore establishes an
+**improvement over the timed-out proof-grade incumbent** — it does *not*
+establish a degree-3-over-degree-2 encoding gain. The evidence for the
+encoding-order effect is the separate eon14_hard receipt below (native
+degree-5 recovers the certified optimum; the degree-2 restriction on the
+same device returns the wrong plan at +9.1%), where the two arms return
+genuinely different plans.
 Jobs `6a943a6408442f441bbb6ad1` / `6a943a7408442f441bbb6ad2`.
 
 **On the NISQ instance, on gate-model hardware.** For eon14_hard we
 developed a hybrid algorithm in the variational family the statement
 invites: the candidate graph is embedded as a 20-qubit interacting-lattice
-operator (one candidate line = one rung; existing corridors always in the
-Hamiltonian; built closures enter as Hamiltonian support), with exact
-per-rung ground-state preparation and Trotterized evolution. The scored
-observable — quench absorption on the existing slack corridors — ranks
-expansion plans in the same order as the physics referee. Flown on IBM
-Heron (ibm_kingston, job `daa0dq6rbfbs73ci56bg`): the certified plan is
-the best absorber on hardware, ahead of the MILP plan and do-nothing, with
-clean null and detuned controls. A fixed-layout, equal-structure
-replication on a second device (ibm_marrakesh, `daa9do6rbfbs73cifa80`)
-reproduces the plan-class separation with per-rung visibility 0.93–0.98.
-A 10-qubit QAOA run (ibm_marrakesh, `d9sqks1dsedc73ai3o30`, depth 333)
-sampled the certified optimum — the letter-of-the-brief variational
-demonstration.
+operator \(H=\mu^\star D-A_6\) (one candidate line = one rung; existing
+corridors always in the Hamiltonian; built closures enter as Hamiltonian
+support), with exact per-rung ground-state preparation and Trotterized
+evolution. The scored observable is the leftover series after an N−1
+quench, and its spectrum \(S(\omega)\). Statevector leftover ranks
+certified > degree-2 > MILP > no-build, matching the physics referee,
+with principal lines 0.222 / 0.333 / 0.444 cycles per step. Imaginary-time
+continuation of the same leftover misses the certified line (0.270 vs
+0.222); dropping the residual \(A_6\) bonds makes every plan
+\(\Delta L=+0.514\). That is an advantage of route, not a supremacy
+claim (`eon_dynamics_crossing.json`). Flown on IBM Heron
+(ibm_kingston, job `daa0dq6rbfbs73ci56bg`): the certified plan is the
+best absorber on hardware (\(\Delta L=+0.113\)), ahead of MILP (+0.045)
+and do-nothing (−0.025), with clean null and detuned controls. Degree-2
+collapsed (−0.006). A fixed-layout, equal-structure replication on a
+second device (ibm_marrakesh, `daa9do6rbfbs73cifa80`) recovers degree-2
+(+0.127 vs frozen +0.124) at visibility 0.93–0.98; the device order is
+deg-2 > certified. Hardware ranking is therefore **partial**. A
+full-\(k\) leftover series (the device Fourier of \(S(\omega)\)) is
+not flown — one-command `python eon_full_k_leftover.py` (retrieve
+only), no job ID. The next flight is \(k=0..8\) on open Heron. A 10-qubit QAOA run
+(ibm_marrakesh, `d9sqks1dsedc73ai3o30`, depth 333) sampled the
+certified optimum — the letter-of-the-brief variational demonstration.
 
 **Same instance, same referee, all solvers:**
 
@@ -117,11 +140,12 @@ the certified plan.
 
 **Scalable from low qubit counts to utility scale (>100 qubits).** The
 operator's unit is the rung (one candidate = 2 qubits), so scaling is
-tiling on the same heavy-hex fabric. The identical operator family has
-been executed at **64 rungs — 128+ qubits — on IBM Heron** (job
-`daa9pn4e74ec73akj9i0`, 33 circuits × 32,768 shots, full depth-15 series
-graded). The 20-qubit card and the 128-qubit flight bracket the brief's
-range with one algorithm, as receipts rather than projections.
+tiling on the same heavy-hex fabric. A 64-rung (128-qubit) leftover
+series is the same compilation. **It is a protocol in this package, not
+a receipt.** We do not import a sister-track 64-rung Heron job
+(`daa9pn4e74ec73akj9i0`) as an E.ON spectrum. The 20-qubit card is
+flown; the >100-qubit leftover series is the next flight, with the
+expected signature written before any shot.
 
 ---
 
@@ -158,62 +182,49 @@ transition demands of the network.
 ### The quantum advantage, in planning terms
 
 Every expansion and storage decision a DSO makes is validated against an
-*assumed* model of how demand and renewable in-feed fluctuate. The
-assumption is the risk: the challenge statement itself notes that
-unevaluated uncertainty forces operators toward conservative plans.
+*assumed* model of how a contingency is absorbed. The assumption is the
+risk: the challenge statement itself notes that unevaluated uncertainty
+forces operators toward conservative plans.
 
 What actually decides how much storage or reinforcement a network needs
-is not the *size* of fluctuations but their *rhythm* — how long swings
-last, whether they cluster, how the network's many interacting flows move
-together. For strongly interacting systems this collective rhythm is the
-one input classical computing cannot supply: simulating the interacting
-dynamics directly exceeds classical solvers at the required depth (our
-adversarial classical benchmark, receipts included, could not reproduce
-it), and the standard mathematical shortcut is provably unreliable at
-*any* system size — more runtime does not help. Unlike a hard MILP, this
-is not a "wait an afternoon" problem; there is no afternoon, or year,
-that produces this number classically.
+is not the *size* of a swing but its *rhythm* — how the leftover on the
+existing slack corridors rings after N−1. That leftover spectrum
+\(S(\omega)\) is a real-time dynamical object of \(H=\mu^\star D-A_6\).
+The scalable classical route is imaginary-time leftover plus analytic
+continuation, which is mathematically ill-posed: two spectra fit the
+same \(G(\tau)\) on this instance and neither recovers the real-time
+line (0.270 / 0.253 vs 0.222). Dropping the residual \(A_6\) bonds
+erases the ranking entirely. Unlike a hard MILP, this is not a "wait
+an afternoon" problem — more runtime does not well-pose continuation.
 
-A quantum processor runs interacting dynamics natively, in real time —
-reading out this rhythm is precisely what the hardware does. We measured
-it on a 128-qubit interacting system, reproduced it on a second machine,
-and delivered it as a planning input: the fluctuation spectrum.
+A quantum processor evolves on the real-time axis natively. The
+spectrum is a Fourier transform with **no continuation step**. That is
+an advantage of route, and it holds at this 20-qubit instance today.
 
 **What it is worth, on one E.ON-class decision** — sizing the firming
-storage for one microgrid: the two standard planning models get it wrong
-in opposite directions (simple scenario draws **undersize the battery by
-24%** — it runs empty exactly when needed; the conservative statistical
-model **oversizes it 12×** — capital spent on capacity that will never
-discharge), while sized against the quantum-measured spectrum the
-requirement is known to ±0.1%. At utility battery prices, right-sizing a
-single microgrid's storage is a **multi-million-euro swing per site** —
-and the same input governs reinforcement deferral, curtailment estimates,
-and outage-risk pricing across the planning portfolio.
+storage for one microgrid (20.85 p.u., 24 h, 10% rms) against four
+fluctuation models at identical power, colored by *this* leftover
+spectrum (statevector, no cloud job): real-time \(S(\omega)\) requires
+**9.76 ± 0.91 p.u.h**; the two-pole continuation of the same
+\(G(\tau)\) requires **6.94 ± 0.69 p.u.h — 29% undersize**. White-noise
+and lag-1 AR sit near the real-time number at this 20q resolution
+(10.67 / 9.57). The decision-changing error is the continuation, not
+the moment-matched surrogates. Receipt: `eon_storage_sizing.json`.
 
 **Why this is advantage in this challenge's sense:** it is not a speedup
-on a task classical computers can also do. It is a decision-changing
-planning input that no classical computation produces at any runtime —
-measured, receipted, cross-checked on two quantum machines — feeding
-directly into the build-or-no-build economics this challenge is about.
+on a task classical computers can also do. It is a planning input whose
+scalable classical route is ill-posed at any runtime. Hardware has
+measured two-point absorption on two Heron chips (partial ranking,
+receipts above). A device Fourier of the full leftover series is the
+next flight, not a caption on a sister-track job.
 
-**Beyond the asked outputs — the cost of classical uncertainty, priced.**
-The statement's executive summary names the consequence of the
-combinatorial wall: operators *"choose a potentially more conservative
-plan."* We measured that cost on the DER side of the same planning
-problem. Sizing firming storage for the decisive microgrid (20.85 p.u.
-load, 24 h, 10% rms collective fluctuation) against three fluctuation
-models at identical power: white-noise scenario draws **undersize the
-battery by 24%** (it runs empty in service); a correlation-matched AR
-surrogate **oversizes it 12×** (capital spent on phantom capacity); the
-**measured collective fluctuation spectrum** — computed on quantum
-hardware as a real-time series (k=0–15 on a 64-rung interacting lattice,
-collective line at 0.0625 cycles/step, reproduced on two devices) — sets
-the true requirement, **16.18 ± 0.02 p.u.h**. Storage capacity is the
-integral of low-frequency spectral power; no moment-matched surrogate
-carries it. The 12× over-build *is* the conservative planning the
-statement describes — priced here, and removed by the quantum-computed
-spectrum. We propose this as a Phase II axis with E.ON's anonymized
-subgrid data.
+**What we do not claim.** A previous draft sized storage against a
+64-rung sister-track spectrum (`daa9pn4e74ec73akj9i0`, 16.18 p.u.h,
+12× AR over-build). That job is not an E.ON result and is not cited
+here. We also do not claim the two-point Heron ranking recovers the
+frozen four-plan order, or absolute-energy supremacy at 10 binaries.
+We propose the full-\(k\) leftover series, and E.ON's anonymized
+medium/low-voltage subgrids, as the Phase II axis.
 
 ---
 
@@ -252,10 +263,10 @@ This package is constructed to close exactly that gap:
   plausibly be reproduced classically, we attacked it ourselves with
   local search and multi-start heuristics and report what survived.
 - **A stated advantage class.** The optimisation results are benchmark
-  comparisons against proof-grade MILP; only the fluctuation-spectrum
-  result is claimed as classically unreachable, and that claim is
-  argued from the ill-posedness of analytic continuation rather than
-  from runtime alone.
+  comparisons against proof-grade MILP. The leftover spectrum
+  \(S(\omega)\) is claimed as an advantage of route — real-time
+  evolution versus ill-posed analytic continuation — not as runtime
+  supremacy, and not as a 100-qubit hardware-vs-MPS result.
 
 **Closest published formulation.** REGRID-QAOA (arXiv:2606.15083)
 applies a resource-efficient hybrid QAOA to physics-constrained power
@@ -292,8 +303,9 @@ The statement notes E.ON's interest in finalizing results and publishing
 jointly. This package is structured for that: one physics referee for
 every solver, frozen pre-registrations, cloud receipts for every claim,
 and two Phase II axes ready for E.ON's anonymized medium/low-voltage
-subgrids — the eon57-class hard rungs at DSO scale, and
-fluctuation-spectrum-driven storage and reinforcement sizing.
+subgrids — the eon57-class hard rungs at DSO scale, and a full-\(k\)
+leftover series on Heron (device Fourier of \(S(\omega)\), one-command
+`python eon_full_k_leftover.py`, no job assigned).
 
 *Team Merlin Digital — every number on the same receipt class, from cloud
 job to report table.*
