@@ -45,6 +45,8 @@ Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC 
 | eon57_util | 20 | 4 | yes | 59,116 | 900 s | timeout, 28.25% gap |
 | eon57_deep | 26 | 6 | yes | 94,646 | 1,801 s | timeout, 33.8% gap → 22.6% at 2.6 h; 3–52 days to certificate |
 
+![Figure 1 — Hardness as a measured convergence law on eon57_deep: HiGHS optimality gap against wall time, the log-time fit, and the fastest observed closing rate; exhaustive certification would cost 87 CPU-days.](C:/quantum ai 2026/figs_v7/eon_convergence.png)
+
 **Quantum algorithm on the hard rung.** eon57_util on Dirac-3 (degree-2 surrogate over 6,001 referee evaluations, holdout Spearman 0.9993): the device returned in seconds a plan the referee grades at **22,078 — 10.4% better than the 24,652 of the plan the timed-out MILP produced in 901 s**, and better than all 6,001 referee-graded classical samples. A one-flip polish from the device's plan closes the last 0.1% to **22,057**, the best value known for the instance; the same polish from the MILP plan reaches the same value, so the delivered method is the hybrid — device basin-finding in seconds, local polish to the floor — and it is 10.5% better than the proof-grade incumbent at its timeout. Jobs `6a943a6408442f441bbb6ad1` / `6a943a7408442f441bbb6ad2`.
 
 **Same instance, same referee, all solvers (eon14_hard):**
@@ -82,19 +84,23 @@ Merlin Quantum is the quantum division of Merlin Digital (50+ technology FTE): S
 
 ---
 
-### Appendix A — Receipts
+### Appendix A — Hardware job register and receipts
 
-| claim | file / job |
-|---|---|
-| Instance table, HiGHS gaps, convergence law | `results/eon57_deep_gap_extrapolation.json`, `results/eon57_fit.json` |
-| Dirac-3 eon57_util plan 22,078; polish 22,057 | `results/eon57_dirac_result.json`, `eon57_localsearch_attack.json`; jobs `6a943a64…ad1` / `…ad2` |
-| eon14_hard all-solver table | `results/eon14_hard_*.json` |
-| Kingston two-point absorption | `daa0dq6rbfbs73ci56bg` |
-| Marrakesh equal-structure replication | `daa9do6rbfbs73cifa80` |
-| QAOA depth 333 | `d9sqks1dsedc73ai3o30` |
-| Dynamics crossing (continuation misses the line) | `results/eon_dynamics_crossing.json` |
-| Storage sizing | `results/eon_storage_sizing.json` |
-| Four-plan series emitter and grader | `prepare_application_series.py`, `grade_application_series.py` |
+| measurement | machine | job id | receipt |
+|---|---|---|---|
+| eon57_util hard rung: plan graded 22,078 vs incumbent 24,652; polish → 22,057 | QCi Dirac-3 | `6a943a6408442f441bbb6ad1`, `6a943a7408442f441bbb6ad2` | `results/eon57_dirac_result.json`, `eon57_localsearch_attack.json` |
+| eon14_hard native degree-5: certified plan, gap 0.000 | QCi Dirac-3 | `6a79a72508442f441bbb5e56` | `results/eon_dirac_result.json` → native |
+| eon14_hard degree-2 (QUBO) restriction: wrong plan, +9.1% | QCi Dirac-3 | `6a79a74e08442f441bbb5e57` | same → surrogate_deg2 |
+| QAOA depth 333, 171 two-qubit gates: certified optimum sampled | ibm_marrakesh | `d9sqks1dsedc73ai3o30` | `results/eon_qaoa_result.json` |
+| 20-qubit two-point absorption: certified +0.113, MILP +0.045, no-build −0.025 | ibm_kingston | `daa0dq6rbfbs73ci56bg` | `eon_field_result.json` |
+| Equal-structure replication: degree-2 +0.127 vs frozen +0.124, visibility 0.93–0.98 | ibm_marrakesh | `daa9do6rbfbs73cifa80` | `eon_field_v2_result_20260831_004726.json` |
+| Instance ladder, HiGHS 0.28 s → 1,801 s; gaps 28.25% / 33.8% | CPU | — | `results/eon_ladder.json` |
+| Convergence law, 22.6% at 9,437 s; projections | CPU | — | `results/eon57_deep_gap_extrapolation.json` |
+| Dynamics crossing: lines 0.222 / 0.333 / 0.444; continuation 0.270 misses | CPU (statevector) | — | `eon_dynamics_crossing.json` |
+| MPS χ-sweep on true cost: χ < 16 wrong plan | CPU | — | `results/eon_rubric_mps.json` |
+| Storage sizing 9.76 vs 6.94 p.u.h | CPU (statevector) | — | `eon_storage_sizing.json` |
+| Held-out scenarios −40.5% | CPU | — | `eon_v4_advantage.json` |
+| Full-k four-plan leftover series (54 circuits) | not flown | — | `prepare_application_series.py`, `series_v6/` |
 
 ### Appendix B — Scope notes
 
