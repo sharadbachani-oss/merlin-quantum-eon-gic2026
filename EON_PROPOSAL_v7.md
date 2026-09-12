@@ -31,6 +31,8 @@ Two things make a credible quantum advantage here. First, the hard instances are
 | Data | open test systems; Phase 2 targets E.ON's anonymised MV/LV subgrids |
 | Classical compute | 32-core workstation for enumeration, MPS comparators and multi-start search |
 
+**Scope, stated with its treatment.** (i) Proof gaps are HiGHS; Gurobi/CPLEX replication is PoC step 1. (ii) The eon57 device rung used a fitted degree-2 surrogate and both arms returned the same plan — the encoding-order evidence is the eon14_hard row. (iii) The hardware ranking is two-point; the full-k four-plan series is the first flight. (iv) The referee is penalised DC, not AC feasibility — AC recourse is charged per accepted plan in Phase 2. (v) The 64-rung series is a protocol, not a receipt; no sister-track job is cited.
+
 Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC feasibility — AC recourse is charged as a classical solve per accepted plan in Phase 2). Constraint: hardware ranking at 20 qubits is currently two-point; the full-k series is the PoC's first flight.
 
 ## 4. Expected impact
