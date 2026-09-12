@@ -62,6 +62,8 @@ Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC 
 | MPS χ=4 on the true cost | wrong plan (identical to QUBO) | 90.995 | +9.1% |
 | HiGHS disjunctive TEP | wrong plan | 131.87 | +58% |
 
+![Figure 2 — Left: eon14_hard graded by the one referee for every solver — the device holding the full degree-5 polynomial and QAOA return the certified plan; the QUBO restriction and a χ=4 MPS return the same wrong plan. Right: MPS on the true cost tensor returns the wrong plan at every χ below 16.](C:/quantum ai 2026/figs_v7/eon_solvers.png)
+
 **MPS gives poor objective value (statement §4.2).** Compressing the true 10-variable cost tensor to bond dimension χ and taking its argmin returns the wrong plan at every χ < 16 (+1.9% to +9.1%); the mid-cut operator Schmidt rank saturates its exponential envelope (8/8 at 6 variables, 32/32 at 10). Cheap MPS is exact where the instance is easy and wrong where it is hard.
 
 **Outputs (statement §5.2) — eon14_hard, IEEE 14-bus, four scenarios, N−1:** add candidates 0 (4→12), 2 (1→8), 3 (2→6), 5 (4→10), 7 (0→1), 8 (0→4), 9 (1→2); total capex 11.42. Thermal congestion 77.125 → **1.440 (−98.1%)**; overloaded (line, scenario, contingency) triples 227 → 7; voltage-drop violations 423 → 137; exact objective 3,856.27 → 83.436, certified minimum. On 12 held-out scenario draws the certified plan's congestion is 1.229 ± 0.169 vs the MILP plan's 2.068 ± 0.321 (−40.5%).
