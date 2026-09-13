@@ -76,6 +76,10 @@ Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC 
 
 **The crossing.** We measured our own optimisation rung against the cheapest classical challenge and report the result: on eon57_util one-flip descent reaches the best-known plan in 18 s, so no runtime claim is made there. We place the advantage in the quantity a planner actually needs after the plan: the **post-contingency leftover spectrum S(ω)** of the reinforced network. Its scalable classical route — imaginary-time evolution plus analytic continuation — is ill-posed, and we measured the failure on the 20-qubit instance: two continuations fit the same G(τ) and neither recovers the 0.222 real-time line (0.270 / 0.253); dropping the residual bonds erases the plan ranking. The statement's own MPS test is met in the same package: below χ = 16 the simulator cannot hold the instance and returns the wrong build. Hardware evolves on the real-time axis; the spectrum is a Fourier transform with no continuation step, and it changes a storage decision by 29%. **Where it is decisive:** wherever the instance's Schmidt rank exceeds what a cheap MPS holds — measured here at 10 binaries, where χ < 16 returns the wrong build — and at every reinforcement question that needs S(ω) after the plan; anchored today at 20 qubits by statevector and two-device hardware absorption, with the 64-rung full-k series and two-sided classical adjudication as the Phase-2 flight.
 
+**Scalability to industrial relevance.** One candidate corridor is one qubit pair, so the operator tiles from 20 qubits (10 candidates) to 128 (64 candidates) on the same heavy-hex compilation with zero SWAP overhead; Dirac-3 holds native polynomials to 949 variables and degree 5. The certificate-hardness law scales the other way — proof time grows ~40× per rung — which is exactly why a planner needs a quantity other than a certificate to act on, and S(ω) is that quantity. Instances built from IEEE 14-bus transfer to E.ON's anonymised MV/LV subgrids by changing the topology file only.
+
+**Business value, bounded.** On one microgrid sizing decision (20.85 p.u., 24 h, 10% rms) the real-time spectrum requires 9.76 p.u.h of firming storage where the continuation route requires 6.94 — a 29% under-build that, at a declared storage cost per p.u.h *s*, is ≈ 2.8 *s* of unbudgeted capacity or one outage event; across a DSO's reinforcement portfolio the same ratio applies to every corridor sized against an assumed contingency response. The certified plan on eon14_hard cuts thermal congestion 98% at capex 11.42 and holds a 40% congestion advantage over the MILP plan on held-out scenarios. Stated as functions of E.ON's cost inputs, not as fixed sums.
+
 **What a successful PoC demonstrates.** On E.ON's anonymised MV/LV subgrids: hard rungs certified as such with Gurobi/CPLEX proof gaps; native degree-≤5 polynomials on Dirac-3 without a fitted surrogate, graded by the shared referee against multistart local search at equal total time; and the full-k leftover spectrum measured on hardware for the four candidate plans, feeding storage and reinforcement sizing with a quantity the classical route cannot produce well-posed.
 
 ## 5. Validation plan
@@ -117,3 +121,15 @@ Merlin Quantum is the quantum division of Merlin Digital (50+ technology FTE): S
 ### Appendix B — Scope notes
 
 The eon57_util device rung used a fitted degree-2 surrogate; both submitted arms returned the identical plan, so that rung establishes improvement over the timed-out incumbent, not an encoding-order effect — the encoding-order evidence is the eon14_hard row (+9.1%). No sister-track 64-rung job is cited as an E.ON result. The 64-rung series is a protocol with the expected signature written before any shot.
+
+### Appendix C — Claim ledger (measured · planned · comparator · quantum attribution · cost · acceptance)
+
+| claim | status | classical comparator | quantum attribution | total cost charged | acceptance threshold |
+|---|---|---|---|---|---|
+| Hard-to-certify instances, convergence law (22.6% at 2.6 h) | measured (HiGHS) | Gurobi/CPLEX replication planned | none | CPU hours | gap law reproduced |
+| Best-known plan reachable classically in 18 s | measured (`eon57_early_polish.json`) | one-flip descent, multistart | none — withdrawn as a device claim | 0.066 s / eval | — |
+| eon14_hard: device holds degree-5, returns certified plan; QUBO/χ=4 wrong build +9.1% | measured | exact enumeration, MPS χ-sweep | Dirac-3 native polynomial | seconds | plan = certified |
+| Leftover spectrum S(ω): continuation misses the 0.222 line | measured (statevector, 20q) | imaginary-time continuation, no-bond control | route (real-time) | CPU | line recovered within 1 bin |
+| Full-k four-plan series on hardware, 64 rungs | planned (Phase-2 flight 1) | converged TN at reported χ; exact 20q anchor | hardware | 54 circuits × 8,192 shots | ranking matches referee within pre-registered tolerance |
+| Storage sizing changes by 29% under S(ω) | measured (model) | continuation, white-noise, AR | route | CPU | decision difference > its CI on a physical grid reference |
+
