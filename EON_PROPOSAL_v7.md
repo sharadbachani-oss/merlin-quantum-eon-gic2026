@@ -88,7 +88,7 @@ Pre-registered per flight: instance, plans, k grid (k = 0..8, nine uniform sampl
 
 ## 6. Hybrid / cross-domain integration
 
-The quantum devices are inputs to a classical planning loop that E.ON already runs: candidate generation (Dirac-3, full polynomial) → local polish → referee grading (classical, AC recourse in Phase 2) → contingency-response spectrum (Heron) → storage/reinforcement sizing → plan. Every circuit is a stock Qiskit `QuantumCircuit` run through `qiskit-ibm-runtime` SamplerV2 with no custom passes; the Dirac arm ships polynomial files and job IDs for resubmission. Runtime: classical audit ~3 min; each hardware job minutes of QPU time.
+The quantum devices are inputs to a classical planning loop that E.ON already runs: candidate generation (Dirac-3, full polynomial) → local polish → referee grading (classical, AC recourse in Phase 2) → contingency-response spectrum (Heron) → storage/reinforcement sizing → plan. Every circuit is a stock Qiskit `QuantumCircuit` run through `qiskit-ibm-runtime` SamplerV2 with no custom passes; the Dirac arm ships polynomial files and job IDs for resubmission. Runtime: the end-to-end solution — candidate generation, 18 s polish, referee grading and one hardware series — completes inside the brief's few-hour limit (classical audit ~3 min; each hardware series ≤ 60 min of QPU time). A Qiskit compatibility layer for E.ON's own execution — the emitter returns `QuantumCircuit` objects and observables, the referee grades any Sampler result — is a PoC deliverable, so E.ON can execute and validate every rung in Qiskit on its own account upon project completion, as the brief asks.
 
 ## 7. Team capability
 
