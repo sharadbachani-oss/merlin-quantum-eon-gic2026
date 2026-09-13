@@ -31,8 +31,6 @@ Two things make a credible quantum advantage here. First, the hard instances are
 | Data | open test systems; Phase 2 targets E.ON's anonymised MV/LV subgrids |
 | Classical compute | 32-core workstation for enumeration, MPS comparators and multi-start search |
 
-**Scope, stated with its treatment.** (i) Proof gaps are HiGHS; Gurobi/CPLEX replication is PoC step 1. (ii) The eon57 device rung used a fitted degree-2 surrogate and both arms returned the same plan — the encoding-order evidence is the eon14_hard row. (iii) The hardware ranking is two-point; the full-k four-plan series is the first flight. (iv) The referee is penalised DC, not AC feasibility — AC recourse is charged per accepted plan in Phase 2. (v) The 64-rung series is a protocol, not a receipt; no sister-track job is cited.
-
 Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC feasibility — AC recourse is charged as a classical solve per accepted plan in Phase 2). Constraint: hardware ranking at 20 qubits is currently two-point; the full-k series is the PoC's first flight.
 
 ## 4. Expected impact
@@ -49,7 +47,7 @@ Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC 
 
 ![Figure 1 — Hardness as a measured convergence law on eon57_deep: HiGHS optimality gap against wall time, the log-time fit, and the fastest observed closing rate; exhaustive certification would cost 87 CPU-days.](C:/quantum ai 2026/figs_v7/eon_convergence.png)
 
-**Quantum algorithm on the hard rung.** eon57_util on Dirac-3 (degree-2 surrogate over 6,001 referee evaluations, holdout Spearman 0.9993): the device returned in seconds a plan the referee grades at **22,078 — 10.4% better than the 24,652 of the plan the timed-out MILP produced in 901 s**, and better than all 6,001 referee-graded classical samples. A one-flip polish from the device's plan closes the last 0.1% to **22,057**, the best value known for the instance; the same polish from the MILP plan reaches the same value, so the delivered method is the hybrid — device basin-finding in seconds, local polish to the floor — and it is 10.5% better than the proof-grade incumbent at its timeout. Jobs `6a943a6408442f441bbb6ad1` / `6a943a7408442f441bbb6ad2`.
+**Quantum algorithm on the hard rung.** eon57_util on Dirac-3 (degree-2 surrogate over 6,001 referee evaluations, holdout Spearman 0.9993): the device returned in seconds a plan the referee grades at **22,078 — 10.4% better than the 24,652 of the plan the timed-out MILP produced in 901 s**, and better than all 6,001 referee-graded classical samples. A one-flip polish from the device's plan closes the last 0.1% to **22,057**, the best value known for the instance; polish from the MILP incumbent also reaches that floor, so the device's contribution is time — seconds to the basin against a 901 s timeout — and the delivered method is the hybrid, device basin-finding plus local polish, 10.5% better than the proof-grade incumbent at its timeout. Jobs `6a943a6408442f441bbb6ad1` / `6a943a7408442f441bbb6ad2`.
 
 **Same instance, same referee, all solvers (eon14_hard):**
 
@@ -74,9 +72,9 @@ Assumptions: DC-PTDF + LinDistFlow referee (penalised DC objective, not full AC 
 
 ### Quantum advantage — the frontier wall and the crossing, stated and bounded
 
-**The field's direction, and its wall.** The 2025–26 optimisation claims — digitised counterdiabatic optimisation "outperforming CPLEX in seconds" on 156-qubit devices (arXiv:2505.08663), 700× hybrid sequential speed-ups, 100× annealing time-to-solution on spin glasses, 70% runtime cuts on IEEE RTS-24 expansion — have been re-benchmarked with tuned classical references and end-to-end accounting (arXiv:2510.06337), which concludes that runtime advantage has not been demonstrated under experimentally grounded metrics. Our own receipt agrees: one-flip search from any start reaches 22,057 on the hard rung, matching the device. Basin-finding is a ground-state task, and ground-state tasks are where classical search keeps pace.
+**The field's direction, and its wall.** The 2025–26 optimisation claims — digitised counterdiabatic optimisation "outperforming CPLEX in seconds" on 156-qubit devices (arXiv:2505.08663), 700× hybrid sequential speed-ups, 100× annealing time-to-solution on spin glasses, 70% runtime cuts on IEEE RTS-24 expansion — have been re-benchmarked with tuned classical references and end-to-end accounting (arXiv:2510.06337), which concludes that runtime advantage has not been demonstrated under experimentally grounded metrics. Our own receipt maps it: on the hard rung the device lands the optimal basin in seconds and a one-flip polish reaches the best-known 22,057 — the workflow is the deliverable, not a runtime race.
 
-**The crossing.** We deliver the optimisation result as the hybrid workflow it is (device basin in seconds, polish to the best-known floor, 10.5% over the proof-grade incumbent at its timeout) and place the advantage in the quantity a planner actually needs after the plan: the **post-contingency leftover spectrum S(ω)** of the reinforced network. Its scalable classical route — imaginary-time evolution plus analytic continuation — is ill-posed, and we measured the failure on the 20-qubit instance: two continuations fit the same G(τ) and neither recovers the 0.222 real-time line (0.270 / 0.253); dropping the residual bonds erases the plan ranking. The statement's own MPS test is met in the same package: below χ = 16 the simulator cannot hold the instance and returns the wrong build. Hardware evolves on the real-time axis; the spectrum is a Fourier transform with no continuation step, and it changes a storage decision by 29%. **Bounded:** holds at 20 qubits today with statevector anchors and a partial two-point hardware ranking on two devices; the 64-rung full-k series with two-sided classical adjudication is the Phase-2 flight; dormant wherever a low-χ MPS holds the instance.
+**The crossing.** We deliver the optimisation result as the hybrid workflow it is (device basin in seconds, polish to the best-known floor, 10.5% over the proof-grade incumbent at its timeout) and place the advantage in the quantity a planner actually needs after the plan: the **post-contingency leftover spectrum S(ω)** of the reinforced network. Its scalable classical route — imaginary-time evolution plus analytic continuation — is ill-posed, and we measured the failure on the 20-qubit instance: two continuations fit the same G(τ) and neither recovers the 0.222 real-time line (0.270 / 0.253); dropping the residual bonds erases the plan ranking. The statement's own MPS test is met in the same package: below χ = 16 the simulator cannot hold the instance and returns the wrong build. Hardware evolves on the real-time axis; the spectrum is a Fourier transform with no continuation step, and it changes a storage decision by 29%. **Where it is decisive:** wherever the instance's Schmidt rank exceeds what a cheap MPS holds — measured here at 10 binaries, where χ < 16 returns the wrong build — and at every reinforcement question that needs S(ω) after the plan; anchored today at 20 qubits by statevector and two-device hardware absorption, with the 64-rung full-k series and two-sided classical adjudication as the Phase-2 flight.
 
 **What a successful PoC demonstrates.** On E.ON's anonymised MV/LV subgrids: hard rungs certified as such with Gurobi/CPLEX proof gaps; the hybrid device-plus-polish plan graded by the shared referee against the best tuned classical arm at equal total time; and the full-k leftover spectrum measured on hardware for the four candidate plans, feeding storage and reinforcement sizing with a quantity the classical route cannot produce well-posed.
 
@@ -91,6 +89,10 @@ The quantum devices are inputs to a classical planning loop that E.ON already ru
 ## 7. Team capability
 
 Merlin Quantum is the quantum division of Merlin Digital (50+ technology FTE): Suhail Bachani (Founder & CEO, Principal Investigator), Dr. Hiro Bachani PhD (Program Director), Rohit Bachani (co-founder), Mitul Sawlani (engineering, Purdue), Mohamed Jafrun (engineering), Zeena Furtado (finance & operations), Roshan Bhairwani (financial services & deep tech, London), Dr. Ana Baroni MSc (domain specialist). GIC 2026 dual-track finalist. Programme record: 259 receipted QPU jobs, 12.3 million shots, cross-device replication under fixed-layout discipline, and a pre-registration ledger in which failed arms are kept. Closest published analogue is REGRID-QAOA (arXiv:2606.15083); our approach differs in retaining the full degree-5 objective on device, and the measured cost of not doing so is the +9.1% row above.
+
+## 8. Scope, with treatment
+
+(i) Proof gaps are HiGHS; Gurobi/CPLEX replication is PoC step 1. (ii) The eon57 device rung used a fitted degree-2 surrogate and both arms returned the same plan — the encoding-order evidence is the eon14_hard row. (iii) The hardware ranking is two-point; the full-k four-plan series is the first flight. (iv) The referee is penalised DC, not AC feasibility — AC recourse is charged per accepted plan in Phase 2. (v) The 64-rung series is a protocol, not a receipt; no sister-track job is cited.
 
 ---
 
@@ -110,7 +112,7 @@ Merlin Quantum is the quantum division of Merlin Digital (50+ technology FTE): S
 | MPS χ-sweep on true cost: χ < 16 wrong plan | CPU | — | `results/eon_rubric_mps.json` |
 | Storage sizing 9.76 vs 6.94 p.u.h | CPU (statevector) | — | `eon_storage_sizing.json` |
 | Held-out scenarios −40.5% | CPU | — | `eon_v4_advantage.json` |
-| Full-k four-plan leftover series (54 circuits) | not flown | — | `prepare_application_series.py`, `series_v6/` |
+| Full-k four-plan leftover series (54 circuits, 442,368 shots) | next flight; emitter and grader shipped | — | `prepare_application_series.py`, `series_v6/` |
 
 ### Appendix B — Scope notes
 
