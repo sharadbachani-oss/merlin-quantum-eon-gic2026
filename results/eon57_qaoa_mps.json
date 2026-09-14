@@ -1,0 +1,215 @@
+{
+ "instance": "eon57_util",
+ "n_binaries": 20,
+ "optimum": 22057.05716394592,
+ "n_terms_deg3": 1350,
+ "protocol": " (fixed before running):\n  1. Optimise (gamma, beta) for p = 1, 2, 3 on the EXACT statevector (numpy, 2^20 amplitudes; the cost layer is an\n     elementwise phase of the full landscape y3, the mixer a product of single-qubit rotations) -- the quantum algorithm's\n     ideal output. Report <cost>, P(optimum) and the best-of-1024-samples build objective.\n  2. Run the SAME circuit (same angles, same gate list) on qiskit-aer's matrix_product_state simulator with\n     matrix_product_state_max_bond_dimension chi = 2, 4, 8, 16, 32, 64, 128, 1024 shots each; grade the sampled builds\n     on the exact r",
+ "results": [
+  {
+   "exact": {
+    "mean_cost": 23716.22451741095,
+    "best_cost": 22125.30638217623,
+    "best_pct_above_opt": 0.3094212329551802,
+    "p_opt": 5.912810606510914e-05,
+    "p": 1,
+    "params": [
+     -1.3680047148572667,
+     0.7666521757127174
+    ],
+    "opt_wall_s": 73.5
+   },
+   "aer_statevector": {
+    "shots": 1024,
+    "wall_s": 0.3,
+    "mean_cost": 23712.76713155588,
+    "best_cost": 22123.17272056272,
+    "best_pct_above_opt": 0.29974785904292395,
+    "p_opt": 0.0
+   },
+   "circuit_matches_reference": true,
+   "mps": [
+    {
+     "chi": 2,
+     "shots": 1024,
+     "wall_s": 0.3,
+     "mean_cost": 23614.452604273596,
+     "best_cost": 22115.79741725465,
+     "best_pct_above_opt": 0.26631047320648704,
+     "p_opt": 0.0,
+     "n_distinct": 1014,
+     "poor_objective": false
+    },
+    {
+     "chi": 4,
+     "shots": 1024,
+     "wall_s": 0.3,
+     "mean_cost": 23713.704261839302,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1016,
+     "poor_objective": false
+    },
+    {
+     "chi": 8,
+     "shots": 1024,
+     "wall_s": 0.6,
+     "mean_cost": 23705.927282265027,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1017,
+     "poor_objective": false
+    },
+    {
+     "chi": 16,
+     "shots": 1024,
+     "wall_s": 1.7,
+     "mean_cost": 23717.214862438057,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1017,
+     "poor_objective": false
+    },
+    {
+     "chi": 32,
+     "shots": 1024,
+     "wall_s": 7.1,
+     "mean_cost": 23722.496437772043,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1016,
+     "poor_objective": false
+    },
+    {
+     "chi": 64,
+     "shots": 1024,
+     "wall_s": 246.8,
+     "mean_cost": 23722.694364676157,
+     "best_cost": 22057.05716394592,
+     "best_pct_above_opt": 0.0,
+     "p_opt": 0.0009765625,
+     "n_distinct": 1016,
+     "poor_objective": false
+    },
+    {
+     "chi": 128,
+     "shots": 1024,
+     "wall_s": 1626.5,
+     "mean_cost": 23722.694364676157,
+     "best_cost": 22057.05716394592,
+     "best_pct_above_opt": 0.0,
+     "p_opt": 0.0009765625,
+     "n_distinct": 1016,
+     "poor_objective": false
+    }
+   ]
+  },
+  {
+   "exact": {
+    "mean_cost": 23325.81228094613,
+    "best_cost": 22120.072462967837,
+    "best_pct_above_opt": 0.28569223243852,
+    "p_opt": 0.0001504097738587951,
+    "p": 2,
+    "params": [
+     1.0587967395741187,
+     -0.8324801893825023,
+     2.13515155958859,
+     -0.276570094606986
+    ],
+    "opt_wall_s": 3791.6
+   },
+   "aer_statevector": {
+    "shots": 1024,
+    "wall_s": 13.7,
+    "mean_cost": 23308.4852008795,
+    "best_cost": 22062.964856509778,
+    "best_pct_above_opt": 0.026783684332626664,
+    "p_opt": 0.0
+   },
+   "circuit_matches_reference": true,
+   "mps": [
+    {
+     "chi": 2,
+     "shots": 1024,
+     "wall_s": 3.5,
+     "mean_cost": 23259.657653273083,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1011,
+     "poor_objective": false
+    },
+    {
+     "chi": 4,
+     "shots": 1024,
+     "wall_s": 3.4,
+     "mean_cost": 23297.318692762474,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1016,
+     "poor_objective": false
+    },
+    {
+     "chi": 8,
+     "shots": 1024,
+     "wall_s": 6.6,
+     "mean_cost": 23336.537904821,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1015,
+     "poor_objective": false
+    },
+    {
+     "chi": 16,
+     "shots": 1024,
+     "wall_s": 21.5,
+     "mean_cost": 23320.78624303775,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1015,
+     "poor_objective": false
+    },
+    {
+     "chi": 32,
+     "shots": 1024,
+     "wall_s": 107.8,
+     "mean_cost": 23321.68369556914,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1015,
+     "poor_objective": false
+    },
+    {
+     "chi": 64,
+     "shots": 1024,
+     "wall_s": 1032.8,
+     "mean_cost": 23324.42669466923,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1015,
+     "poor_objective": false
+    },
+    {
+     "chi": 128,
+     "shots": 1024,
+     "wall_s": 2029.1,
+     "mean_cost": 23325.523221484757,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1015,
+     "poor_objective": false
+    }
+   ]
+  }
+ ]
+}

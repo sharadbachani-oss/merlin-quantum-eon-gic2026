@@ -1,0 +1,56 @@
+{
+ "instance": "eon57_util",
+ "n_binaries": 20,
+ "optimum": 22057.05716394592,
+ "n_terms_deg3": 1350,
+ "protocol": " (fixed before running):\n  1. Optimise (gamma, beta) for p = 1, 2, 3 on the EXACT statevector (numpy, 2^20 amplitudes; the cost layer is an\n     elementwise phase of the full landscape y3, the mixer a product of single-qubit rotations) -- the quantum algorithm's\n     ideal output. Report <cost>, P(optimum) and the best-of-1024-samples build objective.\n  2. Run the SAME circuit (same angles, same gate list) on qiskit-aer's matrix_product_state simulator with\n     matrix_product_state_max_bond_dimension chi = 2, 4, 8, 16, 32, 64, 128, 1024 shots each; grade the sampled builds\n     on the exact r",
+ "results": [
+  {
+   "exact": {
+    "mean_cost": 23716.22451741095,
+    "best_cost": 22125.30638217623,
+    "best_pct_above_opt": 0.3094212329551802,
+    "p_opt": 5.912810606510914e-05,
+    "p": 1,
+    "params": [
+     -1.3680047148572667,
+     0.7666521757127174
+    ],
+    "opt_wall_s": 202.0
+   },
+   "aer_statevector": {
+    "shots": 1024,
+    "wall_s": 19.1,
+    "mean_cost": 23712.767131555876,
+    "best_cost": 22123.17272056272,
+    "best_pct_above_opt": 0.29974785904292395,
+    "p_opt": 0.0
+   },
+   "circuit_matches_reference": true,
+   "mps": [
+    {
+     "chi": 4,
+     "shots": 1024,
+     "wall_s": 1.9,
+     "mean_cost": 23713.704261839302,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1016,
+     "poor_objective": false
+    },
+    {
+     "chi": 32,
+     "shots": 1024,
+     "wall_s": 37.3,
+     "mean_cost": 23722.49643777204,
+     "best_cost": 22062.964856509778,
+     "best_pct_above_opt": 0.026783684332626664,
+     "p_opt": 0.0,
+     "n_distinct": 1016,
+     "poor_objective": false
+    }
+   ]
+  }
+ ]
+}
